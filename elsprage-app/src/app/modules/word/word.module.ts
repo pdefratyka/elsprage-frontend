@@ -7,19 +7,27 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { effects, wordReducer } from './store';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { WordListComponent } from './components/word-list/word-list.component';
+import { WordsComponent } from './containers/words/words.component';
+import { SingleWordComponent } from './components/single-word/single-word.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 
 @NgModule({
   declarations: [
     WordFormComponent,
-    AddWordComponent
+    AddWordComponent,
+    WordListComponent,
+    WordsComponent,
+    SingleWordComponent
   ],
   imports: [
     CommonModule,
     WordRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    SharedModule,
     StoreModule.forFeature('word', wordReducer, {}),
     EffectsModule.forFeature(effects),
   ]

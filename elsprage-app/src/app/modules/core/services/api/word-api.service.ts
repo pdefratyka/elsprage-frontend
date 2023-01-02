@@ -22,14 +22,22 @@ export class WordApiService {
       .get<Language[]>(`${WordApiService.WORDS_URL}/languages`);
   }
 
+  getWords(): Observable<Word[]> {
+    return this.httpClient
+      .get<Word[]>(WordApiService.WORDS_URL);
+  }
+
   private mapToLanguageRequest(word: Word): WordRequest {
     return {
       id: word.id,
       value: word.value,
       translation: word.translation,
+      //TODO Change userId to take it from somewhere else
       userId: 1,
       valueLanguageId: word.valueLanguage.id,
       translationLanguageId: word.translationLanguage.id,
+      valueLanguage: word.valueLanguage,
+      translationLanguage: word.translationLanguage,
       example: word.example,
       image: word.image,
       sound: word.sound

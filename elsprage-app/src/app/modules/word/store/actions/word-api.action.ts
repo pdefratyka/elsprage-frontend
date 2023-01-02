@@ -23,3 +23,13 @@ export const getLanguagesFailure = createAction(
     `[${WORD_API}] Get Languages Failure`,
     props<{ error: Error }>()
 );
+
+export const getWordsSuccess = createAction(
+    `[${WORD_API}] Get Words Success`,
+    props<{ words: Word[] }>()
+);
+
+export const getWordsFailure = createAction(
+    `[${WORD_API}] Get Words Failure`,
+    props<{ error: Error }>()
+);

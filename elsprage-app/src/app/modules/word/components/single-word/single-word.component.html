@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <p>{{word.value}}</p>
+        </div>
+        <div class="col-md-3">
+            <p>{{word.translation}}</p>
+        </div>
+        <div class="col-md-2">
+            <p>{{word.valueLanguage.symbol}}</p>
+        </div>
+        <div class="col-md-2">
+            <p>{{word.translationLanguage.symbol}}</p>
+        </div>
+        <ng-container *ngIf="word.imageDataEncoded!==''">
+            <div class="col-md-2">
+                <img src="data:image/jpg;base64, {{word.imageDataEncoded}}">
+            </div>
+        </ng-container>
+
+    </div>
+</div>

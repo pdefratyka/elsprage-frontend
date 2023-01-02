@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddWordComponent } from './containers/add-word/add-word.component';
+import { WordsComponent } from './containers/words/words.component';
 
-const wordRoutes: Routes = [{ path: 'add', component: AddWordComponent }];
+const wordRoutes: Routes = [{ path: 'add', component: AddWordComponent }, { path: '', component: WordsComponent }];
 
 @NgModule({
   imports: [RouterModule.forChild(wordRoutes)],

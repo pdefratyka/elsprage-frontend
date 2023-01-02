@@ -1,15 +1,18 @@
 import { createReducer, on } from '@ngrx/store';
 import { Language } from 'src/app/modules/shared/models/language';
+import { Word } from 'src/app/modules/shared/models/word';
 import { WordApiAction } from '../actions';
 
 export interface WordState {
     error: string,
-    languages: Language[]
+    languages: Language[],
+    words: Word[]
 }
 
 export const initialState: WordState = {
     error: '',
-    languages: []
+    languages: [],
+    words: []
 };
 
 export const wordReducer = createReducer<WordState>(
@@ -34,6 +37,19 @@ export const wordReducer = createReducer<WordState>(
         };
     }),
     on(WordApiAction.getLanguagesFailure, (state, action): WordState => {
+        return {
+            ...state,
+            error: action.error.message
+        };
+    }),
+    on(WordApiAction.getWordsSuccess, (state, action): WordState => {
+        return {
+            ...state,
+            words: action.words,
+            error: '',
+        };
+    }),
+    on(WordApiAction.getWordsFailure, (state, action): WordState => {
         return {
             ...state,
             error: action.error.message

@@ -10,3 +10,7 @@ export const saveWord = createAction(
 export const getLanguages = createAction(
     `[${WORD_PAGE}] Get Languages`
 );
+
+export const getWords = createAction(
+    `[${WORD_PAGE}] Get Words`
+);

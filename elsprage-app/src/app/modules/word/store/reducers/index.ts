@@ -18,3 +18,7 @@ export const getWordState = createFeatureSelector<WordState>('word');
 export const getLanguages = createSelector(getWordState, (state) => {
     return state.word.languages
 });
+
+export const getWords = createSelector(getWordState, (state) => {
+    return state.word.words
+});

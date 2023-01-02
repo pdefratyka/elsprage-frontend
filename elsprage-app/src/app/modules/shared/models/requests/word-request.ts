@@ -1,3 +1,5 @@
+import { Language } from "../language";
+
 export interface WordRequest {
     id: number;
     userId: number;
@@ -5,6 +7,8 @@ export interface WordRequest {
     translation: string;
     valueLanguageId: number;
     translationLanguageId: number;
+    valueLanguage: Language;
+    translationLanguage: Language;
     image: string;
     sound: string;
     example: string;

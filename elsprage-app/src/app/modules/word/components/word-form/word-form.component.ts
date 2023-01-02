@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Language } from 'src/app/modules/shared/models/language';
 import { Word } from 'src/app/modules/shared/models/word';
 
@@ -13,6 +13,8 @@ export class WordFormComponent implements OnInit {
   languages: Language[];
   @Output()
   wordSave: EventEmitter<Word> = new EventEmitter<Word>();
+  @ViewChild('valueInput') valueInput: ElementRef<HTMLInputElement>;;
+  @ViewChild('translationInput') translationInput: ElementRef<HTMLInputElement>;;
   wordForm: FormGroup;
 
   constructor(private readonly formBuilder: FormBuilder) {
@@ -23,8 +25,16 @@ export class WordFormComponent implements OnInit {
   }
 
   saveWord(): void {
-    console.log("save Word: " + this.getWordFromForm());
     this.wordSave.emit(this.getWordFromForm());
+  }
+
+  onGermanKeySelect(key: string, formControl: AbstractControl, isValueInput: boolean): void {
+    formControl.setValue(formControl.value + key);
+    if (isValueInput) {
+      this.valueInput.nativeElement.focus();
+    } else {
+      this.translationInput.nativeElement.focus();
+    }
   }
 
   private initWordForm(): void {

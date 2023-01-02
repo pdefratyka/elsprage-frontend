@@ -52,4 +52,23 @@ export class WordEffects {
             )
         );
     });
+
+    getWords$ = createEffect(() => {
+        return this.actions$.pipe(
+            ofType(WordPageAction.getWords),
+            concatMap(() =>
+                this.wordApiService.getWords().pipe(
+                    map((words) => {
+                        return WordApiAction.getWordsSuccess({
+                            words
+                        });
+                    }),
+                    catchError((error) => {
+                        this.toastService.error(error);
+                        return of(WordApiAction.getWordsFailure({ error }));
+                    })
+                )
+            )
+        );
+    });
 }

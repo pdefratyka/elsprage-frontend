@@ -10,4 +10,5 @@ export interface Word {
     image: string;
     sound: string;
     example: string;
+    imageDataEncoded: string;
 }
