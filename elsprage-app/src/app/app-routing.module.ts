@@ -8,6 +8,13 @@ const routes: Routes = [
       import('./modules/word/word.module').then(
         (module) => module.WordModule
       ),
+  },
+  {
+    path: 'users',
+    loadChildren: () =>
+      import('./modules/user/user.module').then(
+        (module) => module.UserModule
+      ),
   }
 ];
 
