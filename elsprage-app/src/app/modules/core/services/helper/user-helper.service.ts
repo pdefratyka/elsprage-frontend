@@ -32,9 +32,20 @@ export class UserHelperService {
   }
 
   public handleRegisterFailure(error: HttpErrorResponse): void {
-    this.toastService.displayTranslatedToastError(
-      'ERROR.INTERNAL_SERVER_ERROR'
-    );
+    const errorTranslationKey = this.getRegisterErrorTranslationKey(error);
+    this.toastService.displayTranslatedToastError(errorTranslationKey);
+  }
+
+  private getRegisterErrorTranslationKey(error: HttpErrorResponse): string {
+    let errorTranslationKey = 'ERROR.INTERNAL_SERVER_ERROR';
+    if (error.status === 400 && error.error.message.includes('exists')) {
+      if (error.error.message.includes('login')) {
+        errorTranslationKey = 'ERROR.LOGIN_ALREADY_IN_USE';
+      } else if (error.error.message.includes('email')) {
+        errorTranslationKey = 'ERROR.EMAIL_ALREADY_IN_USE';
+      }
+    }
+    return errorTranslationKey;
   }
 
   private getLoginErrorTranslationKey(error: HttpErrorResponse): string {

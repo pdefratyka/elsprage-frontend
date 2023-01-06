@@ -8,6 +8,8 @@
   "ERROR": {
     "BAD_CREDENTIALS": "Bad credentials",
     "INTERNAL_SERVER_ERROR": "Something went wrong. Please try again later",
+    "EMAIL_ALREADY_IN_USE": "Given email is already used",
+    "LOGIN_ALREADY_IN_USE": "Given login is already used",
     "VALIDATION": {
       "REQUIRED_PASSWORD": "Password is required",
       "REQUIRED_LOGIN": "Login is required",

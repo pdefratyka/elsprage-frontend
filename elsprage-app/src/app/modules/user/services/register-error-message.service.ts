@@ -40,7 +40,6 @@ export class RegisterErrorMessageService {
 
   public static getEmailErrorMessage(errors: ValidationErrors): string {
     let emailError;
-    console.log(errors);
     if (errors && errors['required']) {
       emailError = RegisterErrorMessageService.DEFAULT_EMAIL_VALIDATION_ERROR;
     } else if (errors && errors['invalidEmail']) {
