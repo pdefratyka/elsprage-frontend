@@ -1,0 +1,26 @@
+{
+  "LABEL": {
+    "LOGIN": "Login",
+    "PASSWORD": "Password",
+    "EMAIL": "Email",
+    "REGISTER": "Register"
+  },
+  "ERROR": {
+    "BAD_CREDENTIALS": "Bad credentials",
+    "INTERNAL_SERVER_ERROR": "Something went wrong. Please try again later",
+    "VALIDATION": {
+      "REQUIRED_PASSWORD": "Password is required",
+      "REQUIRED_LOGIN": "Login is required",
+      "REQUIRED_EMAIL": "Email is required",
+      "MIN_LOGIN_LENGTH": "Login has to be at least 5 characters long",
+      "MAX_LOGIN_LENGTH": "Login has to be max 20 characters long",
+      "MIN_PASSWORD_LENGTH": "Password has to be at least 5 characters long",
+      "MAX_PASSWORD_LENGTH": "Password has to be max 80 characters long",
+      "INVALID_EMAIL": "Email is invalid"
+    }
+  },
+  "SUCCESS": {
+    "LOGIN": "You have successfully logged in",
+    "REGISTER": "You have created an acoount. Now you can sign in"
+  }
+}

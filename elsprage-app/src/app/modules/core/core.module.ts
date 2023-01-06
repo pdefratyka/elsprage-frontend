@@ -3,12 +3,17 @@ import { CommonModule } from '@angular/common';
 import { ToastrModule } from 'ngx-toastr';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { APIInterceptor } from './interceptors/api.interceptor';
+import { TranslationConfigModule } from '../shared/configs/translation-config.module';
+import { TranslateModule } from '@ngx-translate/core';
+
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
+    TranslateModule,
+    TranslationConfigModule,
     HttpClientModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
   ],
   providers: [
     {
@@ -18,4 +23,4 @@ import { APIInterceptor } from './interceptors/api.interceptor';
     },
   ],
 })
-export class CoreModule { }
+export class CoreModule {}

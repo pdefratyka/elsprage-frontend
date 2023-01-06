@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { LoginUserRequest } from 'src/app/modules/shared/models/requests/login-user-request';
+import { LoginRequest } from 'src/app/modules/shared/models/requests/login-request';
 import { UserPageAction } from '../../store';
 import { UserState } from '../../store/reducers/user.reducer';
 
@@ -14,7 +14,7 @@ export class LoginComponent {
   constructor(private store: Store<UserState>) {
   }
 
-  login(loginUserRequest: LoginUserRequest): void {
+  login(loginUserRequest: LoginRequest): void {
     this.store.dispatch(UserPageAction.loginUser({ loginUserRequest }));
   }
 }

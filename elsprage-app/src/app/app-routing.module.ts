@@ -10,7 +10,7 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'users',
+    path: '',
     loadChildren: () =>
       import('./modules/user/user.module').then(
         (module) => module.UserModule

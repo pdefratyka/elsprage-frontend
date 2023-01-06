@@ -3,7 +3,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 @Component({
   selector: 'app-key',
   templateUrl: './key.component.html',
-  styleUrls: ['./key.component.scss']
+  styleUrls: ['./key.component.scss'],
 })
 export class KeyComponent {
   @Input()
@@ -12,7 +12,6 @@ export class KeyComponent {
   selectKey: EventEmitter<string> = new EventEmitter<string>();
 
   emitSelectKey(): void {
-    console.log("Emit");
     this.selectKey.emit(this.keyValue);
   }
 }

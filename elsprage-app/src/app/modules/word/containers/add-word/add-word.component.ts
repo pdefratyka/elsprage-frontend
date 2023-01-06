@@ -8,7 +8,7 @@ import { getLanguages, WordPageAction, WordState } from '../../store';
 @Component({
   selector: 'app-add-word',
   templateUrl: './add-word.component.html',
-  styleUrls: ['./add-word.component.scss']
+  styleUrls: ['./add-word.component.scss'],
 })
 export class AddWordComponent implements OnInit {
   languages$: Observable<Language[]>;
@@ -22,7 +22,6 @@ export class AddWordComponent implements OnInit {
   }
 
   saveWord(word: Word): void {
-    console.log("Add word component - save word: " + word);
     this.store.dispatch(WordPageAction.saveWord({ word }));
   }
 }

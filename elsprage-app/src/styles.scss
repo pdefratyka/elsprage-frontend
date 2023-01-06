@@ -1,4 +1,10 @@
+@use './assets/styles/variables' as v;
+
 .field-required:after {
-    content:"*\00a0";
-    color:red;
+    content: "*\00a0";
+    color: red;
+}
+
+html {
+    background-color: v.$background-color-primary;
 }

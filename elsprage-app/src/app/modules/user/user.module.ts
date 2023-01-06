@@ -9,6 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import { effects, userReducer } from './store';
 import { EffectsModule } from '@ngrx/effects';
+import { TranslationConfigModule } from '../shared/configs/translation-config.module';
 
 
 
@@ -21,6 +22,7 @@ import { EffectsModule } from '@ngrx/effects';
   ],
   imports: [
     CommonModule,
+    TranslationConfigModule,
     FormsModule,
     ReactiveFormsModule,
     UserRoutingModule,

@@ -1,0 +1,5 @@
+@use './../../../../../assets/styles/variables' as v;
+
+.login-form {
+  background-color: v.$component-background-color-primary;
+}

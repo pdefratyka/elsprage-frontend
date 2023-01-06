@@ -1,57 +1,97 @@
-<div class="container regiser-form">
+<div class="container register-form">
+  <div class="row"></div>
+  <form [formGroup]="registerForm" (submit)="register()">
+    <!--login-->
+    <div class="form-group row mt-2">
+      <label for="login" class="col-md-2 col-form-label field-required"
+        >{{ "LABEL.LOGIN" | translate }}:</label
+      >
+      <div class="col-md-10">
+        <input
+          type="text"
+          class="form-control"
+          id="login"
+          formControlName="login"
+          (ngModelChange)="updateLoginError()"
+        />
+      </div>
+    </div>
+    <ng-container *ngIf="login.touched && login.errors">
+      <div class="row mt-2">
+        <div class="offset-md-2 col-md-10">
+          <div class="alert alert-danger" role="alert">
+            {{ loginError | translate }}
+          </div>
+        </div>
+      </div>
+    </ng-container>
+    <!--password-->
+    <div class="form-group row mt-2">
+      <label for="password" class="col-md-2 col-form-label field-required"
+        >{{ "LABEL.PASSWORD" | translate }}:</label
+      >
+      <div class="col-md-10">
+        <input
+          type="password"
+          class="form-control"
+          id="password"
+          formControlName="password"
+          (ngModelChange)="updatePasswordError()"
+        />
+      </div>
+    </div>
+    <ng-container *ngIf="password.touched && password.errors">
+      <div class="row mt-2">
+        <div class="offset-md-2 col-md-10">
+          <div class="alert alert-danger" role="alert">
+            {{ passwordError | translate }}
+          </div>
+        </div>
+      </div>
+    </ng-container>
+    <!--email-->
+    <div class="form-group row mt-2">
+      <label for="email" class="col-md-2 col-form-label field-required"
+        >{{ "LABEL.EMAIL" | translate }}:</label
+      >
+      <div class="col-md-10">
+        <input
+          type="text"
+          class="form-control"
+          id="email"
+          formControlName="email"
+          (ngModelChange)="updateEmailError()"
+        />
+      </div>
+    </div>
+    <ng-container *ngIf="email.touched && email.errors">
+      <div class="row mt-2">
+        <div class="offset-md-2 col-md-10">
+          <div class="alert alert-danger" role="alert">
+            {{ emailError | translate }}
+          </div>
+        </div>
+      </div>
+    </ng-container>
+    <!--buttons panel-->
+    <div class="row mt-2 mb-2">
+      <div class="col-md-4 col-lg-3 mx-auto">
+        <button
+          type="submit"
+          class="btn btn-primary w-100"
+          [disabled]="registerForm.invalid"
+        >
+          {{ "LABEL.REGISTER" | translate }}
+        </button>
+      </div>
+    </div>
     <div class="row"></div>
-    <form [formGroup]="registerForm" (submit)="register()">
-        <div class="form-group row mt-2">
-            <label for="login" class="col-sm-2 col-form-label field-required">Login:</label>
-            <div class="col-sm-6">
-                <input type="text" class="form-control" id="login" formControlName="login">
-            </div>
-            <ng-container *ngIf="(registerForm.controls['login'].invalid && registerForm.controls['login'].touched)">
-                <div class="row mt-2">
-                    <div class="col-sm-12">
-                        <div class="alert alert-danger" role="alert">
-                            Login is required
-                        </div>
-                    </div>
-                </div>
-            </ng-container>
-        </div>
-        <div class="form-group row mt-2">
-            <label for="password" class="col-sm-2 col-form-label field-required">Password:</label>
-            <div class="col-sm-6">
-                <input type="text" class="form-control" id="password" formControlName="password">
-            </div>
-            <ng-container
-                *ngIf="(registerForm.controls['password'].invalid && registerForm.controls['password'].touched)">
-                <div class="row mt-2">
-                    <div class="col-sm-12">
-                        <div class="alert alert-danger" role="alert">
-                            Password is required
-                        </div>
-                    </div>
-                </div>
-            </ng-container>
-        </div>
-        <div class="form-group row mt-2">
-            <label for="email" class="col-sm-2 col-form-label field-required">Email:</label>
-            <div class="col-sm-6">
-                <input type="text" class="form-control" id="email" formControlName="email">
-            </div>
-            <ng-container *ngIf="(registerForm.controls['email'].invalid && registerForm.controls['email'].touched)">
-                <div class="row mt-2">
-                    <div class="col-sm-12">
-                        <div class="alert alert-danger" role="alert">
-                            Email is required
-                        </div>
-                    </div>
-                </div>
-            </ng-container>
-        </div>
-        <div class="row mt-2 mb-2">
-            <div class="col-md-4 mx-auto">
-                <button type="submit" class="btn btn-primary" [disabled]="registerForm.invalid">Submit</button>
-            </div>
-        </div>
-        <div class="row"></div>
-    </form>
+  </form>
+  <div class="row">
+    <div class="col-md-4 col-lg-3 mb-2 mx-auto">
+      <button class="btn btn-danger w-100" [routerLink]="['/login']">
+        {{ "LABEL.LOGIN" | translate }}
+      </button>
+    </div>
+  </div>
 </div>
