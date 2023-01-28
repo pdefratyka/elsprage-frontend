@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Language } from 'src/app/modules/shared/models/language';
 import { WordRequest } from 'src/app/modules/shared/models/requests/word-request';
+import { LanguagesResponse } from 'src/app/modules/shared/models/responses/languages-response';
 import { Word } from 'src/app/modules/shared/models/word';
 
 @Injectable({
@@ -17,9 +18,9 @@ export class WordApiService {
       .post<Word>(WordApiService.WORDS_URL, this.mapToLanguageRequest(word));
   }
 
-  getLanguages(): Observable<Language[]> {
+  getLanguages(): Observable<LanguagesResponse> {
     return this.httpClient
-      .get<Language[]>(`${WordApiService.WORDS_URL}/languages`);
+      .get<LanguagesResponse>('/languages');
   }
 
   getWords(): Observable<Word[]> {
@@ -32,8 +33,6 @@ export class WordApiService {
       id: word.id,
       value: word.value,
       translation: word.translation,
-      //TODO Change userId to take it from somewhere else
-      userId: 1,
       valueLanguageId: word.valueLanguage.id,
       translationLanguageId: word.translationLanguage.id,
       valueLanguage: word.valueLanguage,
