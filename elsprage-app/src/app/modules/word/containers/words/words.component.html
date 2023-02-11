@@ -1,1 +1,13 @@
-<app-word-list [words]="words$ | async"></app-word-list>
+<div class="words-list-page">
+  <div class="container mt-4">
+    <div class="row">
+      <div class="col-md-12 mx-auto">
+        <app-word-list
+          [words]="words$ | async"
+          (wordRemove)="removeWord($event)"
+          (wordEdit)="editWord($event)"
+        ></app-word-list>
+      </div>
+    </div>
+  </div>
+</div>

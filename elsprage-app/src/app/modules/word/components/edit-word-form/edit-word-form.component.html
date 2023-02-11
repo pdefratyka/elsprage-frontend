@@ -1,0 +1,180 @@
+<div class="container word-form">
+  <div class="row"></div>
+  <form [formGroup]="wordForm" (submit)="saveWord()">
+    <div class="form-group row mt-2">
+      <label for="value" class="col-sm-2 col-form-label field-required"
+        >Value:</label
+      >
+      <div class="col-sm-6">
+        <input
+          type="text"
+          class="form-control"
+          id="value"
+          formControlName="value"
+          #valueInput
+        />
+      </div>
+      <label for="valueLanguage" class="col-md-2 col-form-label field-required"
+        >Language:</label
+      >
+      <div class="col-sm-2">
+        <select
+          class="form-control"
+          id="valueLanguage"
+          formControlName="valueLanguage"
+        >
+          <option
+            *ngFor="let language of languages; index as i"
+            value="{{ i }}"
+            [selected]="
+              word.valueLanguage && language.id === word.valueLanguage.id
+            "
+          >
+            {{ language.symbol }}
+          </option>
+        </select>
+      </div>
+      <ng-container
+        *ngIf="
+          wordForm.controls['value'].invalid &&
+          wordForm.controls['value'].touched
+        "
+      >
+        <div class="row mt-2">
+          <div class="col-sm-12">
+            <div class="alert alert-danger" role="alert">Value is required</div>
+          </div>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="wordForm.controls['valueLanguage'].value === '2'">
+        <div class="row mt-2">
+          <div class="ccol-sm-12">
+            <app-german-keyboard
+              (selectKey)="
+                onGermanKeySelect($event, wordForm.controls['value'], true)
+              "
+            >
+            </app-german-keyboard>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+    <div class="form-group row mt-2">
+      <label for="translation" class="col-md-2 col-form-label field-required"
+        >Translation:</label
+      >
+      <div class="col-sm-6">
+        <input
+          type="text"
+          class="form-control"
+          id="translation"
+          formControlName="translation"
+          #translationInput
+        />
+      </div>
+      <label
+        for="translationLanguage"
+        class="col-md-2 col-form-label field-required"
+        >Language:</label
+      >
+      <div class="col-sm-2">
+        <select
+          class="form-control"
+          id="translationLanguage"
+          formControlName="translationLanguage"
+        >
+          <option
+            *ngFor="let language of languages; index as i"
+            value="{{ i }}"
+            [selected]="
+              word.translationLanguage &&
+              language.id === word.translationLanguage.id
+            "
+          >
+            {{ language.symbol }}
+          </option>
+        </select>
+      </div>
+      <ng-container
+        *ngIf="
+          wordForm.controls['translation'].invalid &&
+          wordForm.controls['translation'].touched
+        "
+      >
+        <div class="row mt-2">
+          <div class="col-sm-12">
+            <div class="alert alert-danger" role="alert">
+              Translation is required
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+    <ng-container
+      *ngIf="wordForm.controls['translationLanguage'].value === '2'"
+    >
+      <div class="row mt-2">
+        <div class="col-md-8">
+          <app-german-keyboard
+            (selectKey)="
+              onGermanKeySelect($event, wordForm.controls['translation'], false)
+            "
+          >
+          </app-german-keyboard>
+        </div>
+      </div>
+    </ng-container>
+    <div class="form-group row mt-2">
+      <label for="image" class="col-md-2 col-form-label">Image:</label>
+      <div class="col-sm-10">
+        <input
+          type="text"
+          class="form-control"
+          id="image"
+          formControlName="image"
+        />
+      </div>
+    </div>
+    <ng-container *ngIf="wordForm.controls['image'].value !== ''">
+      <div class="row mt-2">
+        <div class="col-md-12 text-center">
+          <img src="{{ wordForm.controls['image'].value }}" class="image" />
+        </div>
+      </div>
+    </ng-container>
+    <div class="form-group row mt-2">
+      <label for="sound" class="col-md-2 col-form-label">Sound:</label>
+      <div class="col-sm-10">
+        <input
+          type="text"
+          class="form-control"
+          id="sound"
+          formControlName="sound"
+        />
+      </div>
+    </div>
+    <div class="form-group row mt-2">
+      <label for="example" class="col-md-2 col-form-label">Example:</label>
+      <div class="col-sm-10">
+        <input
+          type="text"
+          class="form-control"
+          id="example"
+          formControlName="example"
+        />
+      </div>
+    </div>
+    <div class="row mt-2 mb-2">
+      <div class="col-md-4 mx-auto">
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="wordForm.invalid"
+        >
+          Submit
+        </button>
+      </div>
+    </div>
+    <div class="row"></div>
+  </form>
+</div>

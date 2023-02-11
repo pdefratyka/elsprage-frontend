@@ -11,6 +11,8 @@ import { WordListComponent } from './components/word-list/word-list.component';
 import { WordsComponent } from './containers/words/words.component';
 import { SingleWordComponent } from './components/single-word/single-word.component';
 import { SharedModule } from '../shared/shared.module';
+import { EditWordFormComponent } from './components/edit-word-form/edit-word-form.component';
+import { EditWordComponent } from './containers/edit-word/edit-word.component';
 
 
 
@@ -20,7 +22,9 @@ import { SharedModule } from '../shared/shared.module';
     AddWordComponent,
     WordListComponent,
     WordsComponent,
-    SingleWordComponent
+    SingleWordComponent,
+    EditWordFormComponent,
+    EditWordComponent
   ],
   imports: [
     CommonModule,

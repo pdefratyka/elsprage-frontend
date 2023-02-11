@@ -34,6 +34,26 @@ export class WordEffects {
     );
   });
 
+  updateWord$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(WordPageAction.updateWord),
+      concatMap((action) =>
+        this.wordApiService.updateWord(action.word).pipe(
+          map((word) => {
+            this.toastService.success('Word has been updated');
+            return WordApiAction.updateWordSuccess({
+              word,
+            });
+          }),
+          catchError((error) => {
+            this.toastService.error(error);
+            return of(WordApiAction.updateWordFailure({ error }));
+          })
+        )
+      )
+    );
+  });
+
   getLanguages$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(WordPageAction.getLanguages),
@@ -57,15 +77,53 @@ export class WordEffects {
     return this.actions$.pipe(
       ofType(WordPageAction.getWords),
       concatMap(() =>
-        this.wordApiService.getWords().pipe(
-          map((words) => {
+        this.wordApiService.getUsersWords().pipe(
+          map((usersWordsResponse) => {
             return WordApiAction.getWordsSuccess({
-              words,
+              usersWordsResponse,
             });
           }),
           catchError((error) => {
             this.toastService.error(error);
             return of(WordApiAction.getWordsFailure({ error }));
+          })
+        )
+      )
+    );
+  });
+
+  removeWord$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(WordPageAction.removeWord),
+      concatMap((action) =>
+        this.wordApiService.removeWord(action.wordId).pipe(
+          map(() => {
+            return WordApiAction.removeWordSuccess({
+              wordId: action.wordId,
+            });
+          }),
+          catchError((error) => {
+            this.toastService.error(error);
+            return of(WordApiAction.removeWordFailure({ error }));
+          })
+        )
+      )
+    );
+  });
+
+  getWordById$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(WordPageAction.getWordById),
+      concatMap((action) =>
+        this.wordApiService.getWordById(action.wordId).pipe(
+          map((word) => {
+            return WordApiAction.getWordByIdSuccess({
+              word,
+            });
+          }),
+          catchError((error) => {
+            this.toastService.error(error);
+            return of(WordApiAction.getWordByIdFailure({ error }));
           })
         )
       )

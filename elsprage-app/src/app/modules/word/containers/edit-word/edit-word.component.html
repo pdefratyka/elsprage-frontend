@@ -1,11 +1,12 @@
-<div class="add-word-page">
+<div class="edit-word-page">
   <div class="container mt-4">
     <div class="row">
       <div class="col-md-8 mx-auto">
-        <app-word-form
+        <app-edit-word-form
           [languages]="languages$ | async"
+          [word]="word$ | async"
           (wordSave)="saveWord($event)"
-        ></app-word-form>
+        ></app-edit-word-form>
       </div>
     </div>
   </div>
