@@ -85,11 +85,10 @@ export const wordReducer = createReducer<WordState>(
     };
   }),
   on(WordApiAction.updateWordSuccess, (state, action): WordState => {
-    const words = state.words.filter((w) => w.id !== action.word.id);
-    words.push(action.word);
+    // const words = state.words.filter((w) => w.id !== action.word.id);
+    // words.push(action.word);
     return {
       ...state,
-      words: words,
       error: '',
     };
   }),

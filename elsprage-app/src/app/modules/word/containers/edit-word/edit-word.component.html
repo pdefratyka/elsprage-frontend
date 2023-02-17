@@ -1,7 +1,11 @@
 <div class="edit-word-page">
+  <app-top-menu></app-top-menu>
   <div class="container mt-4">
     <div class="row">
-      <div class="col-md-8 mx-auto">
+      <div class="col-md-2">
+        <app-side-menu></app-side-menu>
+      </div>
+      <div class="col-md-10 mx-auto">
         <app-edit-word-form
           [languages]="languages$ | async"
           [word]="word$ | async"

@@ -79,12 +79,9 @@ export class EditWordFormComponent implements OnInit, OnChanges {
       imageDataEncoded: this.word.imageDataEncoded,
       value: this.wordForm.get('value')?.value,
       translation: this.wordForm.get('translation')?.value,
-      valueLanguage: this.languages.find(
-        (l) => l.id === this.wordForm.get('valueLanguage')?.value
-      ),
-      translationLanguage: this.languages.find(
-        (l) => l.id === this.wordForm.get('translationLanguage')?.value
-      ),
+      valueLanguage: this.languages[this.wordForm.get('valueLanguage')?.value],
+      translationLanguage:
+        this.languages[this.wordForm.get('translationLanguage')?.value],
       image: this.wordForm.get('image')?.value,
       sound: this.wordForm.get('sound')?.value,
       example: this.wordForm.get('example')?.value,
@@ -92,16 +89,29 @@ export class EditWordFormComponent implements OnInit, OnChanges {
   }
 
   private setValuesOnForm() {
-    if (this.word && this.wordForm) {
+    if (
+      this.word &&
+      this.languages &&
+      this.word.valueLanguage &&
+      this.wordForm
+    ) {
       this.wordForm.get('value').setValue(this.word.value);
       this.wordForm.get('translation').setValue(this.word.translation);
       this.wordForm.get('image').setValue(this.word.image);
       this.wordForm.get('sound').setValue(this.word.sound);
       this.wordForm.get('example').setValue(this.word.example);
-      this.wordForm.get('valueLanguage').setValue(this.word.valueLanguage?.id);
+      this.wordForm
+        .get('valueLanguage')
+        .setValue(
+          this.languages.findIndex((l) => l.id === this.word.valueLanguage.id)
+        );
       this.wordForm
         .get('translationLanguage')
-        .setValue(this.word.translationLanguage?.id);
+        .setValue(
+          this.languages.findIndex(
+            (l) => l.id === this.word.translationLanguage.id
+          )
+        );
     }
   }
 }
