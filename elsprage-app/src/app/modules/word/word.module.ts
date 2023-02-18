@@ -5,7 +5,7 @@ import { AddWordComponent } from './containers/add-word/add-word.component';
 import { WordRoutingModule } from './word-routing.module';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { effects, wordReducer } from './store';
+import { wordEffects, wordReducer } from './store';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { WordListComponent } from './components/word-list/word-list.component';
 import { WordsComponent } from './containers/words/words.component';
@@ -33,7 +33,7 @@ import { EditWordComponent } from './containers/edit-word/edit-word.component';
     ReactiveFormsModule,
     SharedModule,
     StoreModule.forFeature('word', wordReducer, {}),
-    EffectsModule.forFeature(effects),
+    EffectsModule.forFeature(wordEffects),
   ]
 })
 export class WordModule { }

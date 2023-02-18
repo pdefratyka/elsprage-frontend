@@ -5,22 +5,24 @@ const routes: Routes = [
   {
     path: 'words',
     loadChildren: () =>
-      import('./modules/word/word.module').then(
-        (module) => module.WordModule
+      import('./modules/word/word.module').then((module) => module.WordModule),
+  },
+  {
+    path: 'packets',
+    loadChildren: () =>
+      import('./modules/packet/packet.module').then(
+        (module) => module.PacketModule
       ),
   },
   {
     path: '',
     loadChildren: () =>
-      import('./modules/user/user.module').then(
-        (module) => module.UserModule
-      ),
-  }
+      import('./modules/user/user.module').then((module) => module.UserModule),
+  },
 ];
-
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

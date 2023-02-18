@@ -4,7 +4,7 @@ import { Word } from 'src/app/modules/shared/models/word';
 const WORD_PAGE = 'Word Page';
 
 export const saveWord = createAction(
-  `[${WORD_PAGE}] Get Time Series`,
+  `[${WORD_PAGE}] Save word`,
   props<{ word: Word }>()
 );
 
