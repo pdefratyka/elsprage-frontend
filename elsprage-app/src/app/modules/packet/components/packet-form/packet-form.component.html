@@ -53,16 +53,18 @@
     </div>
   </form>
   <div class="row added-words mt-2">
-    <app-packet-word-list
+    <app-shared-word-list
       [words]="addedWords"
-      (wordRemove)="removeWord($event)"
-    ></app-packet-word-list>
+      [isSecondaryActionButton]="true"
+      (secondaryAction)="removeWord($event)"
+    ></app-shared-word-list>
   </div>
   <div class="row words-to-add mt-2">
-    <app-packet-word-list-to-add
+    <app-shared-word-list
       [words]="wordsToAdd"
-      (wordAdd)="addWord($event)"
-    ></app-packet-word-list-to-add>
+      [isMainActionButton]="true"
+      (mainAction)="addWord($event)"
+    ></app-shared-word-list>
   </div>
   <div class="row mt-2">
     <div class="offset-md-10 col-md-2">

@@ -21,8 +21,8 @@ export class WordsComponent {
     this.store.dispatch(WordPageAction.getWords());
   }
 
-  removeWord(wordId: number): void {
-    this.store.dispatch(WordPageAction.removeWord({ wordId }));
+  removeWord(word: Word): void {
+    this.store.dispatch(WordPageAction.removeWord({ wordId: word.id }));
   }
 
   editWord(word: Word): void {

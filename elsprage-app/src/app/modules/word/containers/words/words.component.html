@@ -6,11 +6,14 @@
         <app-side-menu></app-side-menu>
       </div>
       <div class="col-md-10 mx-auto">
-        <app-word-list
+        <app-shared-word-list
           [words]="words$ | async"
-          (wordRemove)="removeWord($event)"
-          (wordEdit)="editWord($event)"
-        ></app-word-list>
+          [isMainActionButton]="true"
+          [isSecondaryActionButton]="true"
+          [isImage]="true"
+          (mainAction)="editWord($event)"
+          (secondaryAction)="removeWord($event)"
+        ></app-shared-word-list>
       </div>
     </div>
   </div>

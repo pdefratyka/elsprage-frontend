@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="row align-items-center">
+    <div class="text-center" [ngStyle]="{ width: bigColSize }">
+      <p>{{ word.value }}</p>
+    </div>
+    <div class="text-center" [ngStyle]="{ width: bigColSize }">
+      <p>{{ word.translation }}</p>
+    </div>
+    <div class="text-center" [ngStyle]="{ width: smallColSize }">
+      <p>{{ word.valueLanguage.symbol }}</p>
+    </div>
+    <div class="text-center" [ngStyle]="{ width: smallColSize }">
+      <p>{{ word.translationLanguage.symbol }}</p>
+    </div>
+    <ng-container *ngIf="isImage && word.imageDataEncoded !== ''">
+      <div class="text-center image-container" [ngStyle]="{ width: bigColSize }">
+        <img
+          src="data:image/jpg;base64, {{ word.imageDataEncoded }}"
+          class="image"
+        />
+      </div>
+    </ng-container>
+    <ng-container *ngIf="isMainActionButton">
+      <div class="text-center" [ngStyle]="{ width: smallColSize }">
+        <input
+          type="button"
+          class="btn btn-primary"
+          value="+"
+          (click)="emitMainAction()"
+        />
+      </div>
+    </ng-container>
+    <ng-container *ngIf="isSecondaryActionButton">
+      <div class="text-center" [ngStyle]="{ width: smallColSize }">
+        <input
+          type="button"
+          class="btn btn-danger"
+          value="-"
+          (click)="emitSecondaryAction()"
+        />
+      </div>
+    </ng-container>
+  </div>
+</div>

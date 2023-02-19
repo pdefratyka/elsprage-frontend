@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row table-header mb-2">
+    <div class="text-center" [ngStyle]="{ width: bigColSize }">Value</div>
+    <div class="text-center" [ngStyle]="{ width: bigColSize }">Translation</div>
+    <div class="text-center" [ngStyle]="{ width: smallColSize }">
+      Val. Lang.
+    </div>
+    <div class="text-center" [ngStyle]="{ width: smallColSize }">
+      Tran. Lang.
+    </div>
+    <div *ngIf="isImage" class="text-center" [ngStyle]="{ width: bigColSize }">
+      Image
+    </div>
+  </div>
+  <ng-container *ngFor="let word of words">
+    <div class="row" class="single-word-row">
+      <app-single-word
+        [isImage]="isImage"
+        [isMainActionButton]="isMainActionButton"
+        [isSecondaryActionButton]="isSecondaryActionButton"
+        [word]="word"
+        (mainAction)="emitMainAction($event)"
+        (secondaryAction)="emitSecondaryAction($event)"
+      ></app-single-word>
+    </div>
+  </ng-container>
+</div>
