@@ -23,6 +23,7 @@
           id="valueLanguage"
           formControlName="valueLanguage"
         >
+          <option></option>
           <option
             *ngFor="let language of languages; index as i"
             value="{{ i }}"
@@ -42,6 +43,7 @@
           id="translationLanguage"
           formControlName="translationLanguage"
         >
+          <option></option>
           <option
             *ngFor="let language of languages; index as i"
             value="{{ i }}"
@@ -63,7 +65,11 @@
     <app-shared-word-list
       [words]="wordsToAdd"
       [isMainActionButton]="true"
+      [isWordFilter]="true"
+      [numberOfWords]="numberOfWords"
       (mainAction)="addWord($event)"
+      (pageSelection)="selectPage($event)"
+      (wordFilter)="getWordsByQuery($event)"
     ></app-shared-word-list>
   </div>
   <div class="row mt-2">

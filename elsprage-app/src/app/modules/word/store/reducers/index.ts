@@ -23,6 +23,18 @@ export const getWords = createSelector(getWordState, (state) => {
   return state.word.words;
 });
 
+export const getPage = createSelector(getWordState, (state) => {
+  return state.word.page;
+});
+
+export const getPageSize = createSelector(getWordState, (state) => {
+  return state.word.pageSize;
+});
+
+export const getNumberOfWords = createSelector(getWordState, (state) => {
+  return state.word.numberOfWords;
+});
+
 export const getSelectedWord = createSelector(getWordState, (state) => {
   return state.word.selectedWord;
 });

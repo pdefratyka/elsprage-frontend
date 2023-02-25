@@ -77,8 +77,8 @@ export class WordEffects {
   getWords$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(WordPageAction.getWords),
-      concatMap(() =>
-        this.wordApiService.getUsersWords().pipe(
+      concatMap((action) =>
+        this.wordApiService.getUsersWords(action.query, action.page).pipe(
           map((usersWordsResponse) => {
             return WordApiAction.getWordsSuccess({
               usersWordsResponse,

@@ -15,10 +15,18 @@ export class WordListComponent implements OnInit {
   isSecondaryActionButton: boolean;
   @Input()
   isImage: boolean;
+  @Input()
+  isWordFilter: boolean;
+  @Input()
+  numberOfWords: number;
   @Output()
   mainAction: EventEmitter<Word> = new EventEmitter<Word>();
   @Output()
   secondaryAction: EventEmitter<Word> = new EventEmitter<Word>();
+  @Output()
+  wordFilter: EventEmitter<string> = new EventEmitter<string>();
+  @Output()
+  pageSelection: EventEmitter<number> = new EventEmitter<number>();
 
   bigColSize = '0%';
   smallColSize = '8.3%';
@@ -38,6 +46,14 @@ export class WordListComponent implements OnInit {
 
   emitMainAction(word: Word): void {
     this.mainAction.emit(word);
+  }
+
+  emitWordFilter(query: string): void {
+    this.wordFilter.emit(query);
+  }
+
+  selectPage(page: number): void {
+    this.pageSelection.emit(page);
   }
 
   private getNumberOfColumns(): void {

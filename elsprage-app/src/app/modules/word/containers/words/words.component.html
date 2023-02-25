@@ -11,8 +11,12 @@
           [isMainActionButton]="true"
           [isSecondaryActionButton]="true"
           [isImage]="true"
+          [isWordFilter]="true"
+          [numberOfWords]="numberOfWords$ | async"
           (mainAction)="editWord($event)"
           (secondaryAction)="removeWord($event)"
+          (wordFilter)="getWordsByQuery($event)"
+          (pageSelection)="selectPage($event)"
         ></app-shared-word-list>
       </div>
     </div>

@@ -37,9 +37,9 @@ export class WordApiService {
     return this.httpClient.get<LanguagesResponse>('/languages');
   }
 
-  getUsersWords(): Observable<UsersWordsResponse> {
+  getUsersWords(query: string, page: number): Observable<UsersWordsResponse> {
     return this.httpClient.get<UsersWordsResponse>(
-      `${WordApiService.WORDS_URL}/user`
+      `${WordApiService.WORDS_URL}/user?query=${query}&page=${page}`
     );
   }
 

@@ -10,7 +10,10 @@ export const saveWord = createAction(
 
 export const getLanguages = createAction(`[${WORD_PAGE}] Get Languages`);
 
-export const getWords = createAction(`[${WORD_PAGE}] Get Words`);
+export const getWords = createAction(
+  `[${WORD_PAGE}] Get Words`,
+  props<{ query: string; page: number }>()
+);
 
 export const removeWord = createAction(
   `[${WORD_PAGE}] Remove Word`,

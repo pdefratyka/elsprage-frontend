@@ -12,12 +12,18 @@ import { Word } from 'src/app/modules/shared/models/word';
 export class PacketFormComponent implements OnInit {
   @Input()
   languages: Language[];
-  packetForm: FormGroup;
-  addedWords: Word[] = [];
   @Input()
   wordsToAdd: Word[];
+  @Input()
+  numberOfWords: number;
   @Output()
   packetCreate: EventEmitter<PacketRequest> = new EventEmitter<PacketRequest>();
+  @Output()
+  pageSelection: EventEmitter<number> = new EventEmitter<number>();
+  @Output()
+  wordFilter: EventEmitter<string> = new EventEmitter<string>();
+  packetForm: FormGroup;
+  addedWords: Word[] = [];
 
   constructor(private readonly formBuilder: FormBuilder) {}
 
@@ -38,6 +44,14 @@ export class PacketFormComponent implements OnInit {
 
   removeWord(word: Word): void {
     this.addedWords = this.addedWords.filter((w) => w.id !== word.id);
+  }
+
+  selectPage(page: number): void {
+    this.pageSelection.emit(page);
+  }
+
+  getWordsByQuery(query: string): void {
+    this.wordFilter.emit(query);
   }
 
   private initPacketForm(): void {

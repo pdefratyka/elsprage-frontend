@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <nav aria-label="Page navigation example" *ngIf="numberOfWords > 0">
+        <ul class="pagination">
+          <li class="page-item" *ngFor="let page of pages">
+            <a
+              class="page-link"
+              [ngClass]="{ 'selected-page': selectedPage === page }"
+              (click)="selectPage(page)"
+              >{{ page + 1 }}</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>

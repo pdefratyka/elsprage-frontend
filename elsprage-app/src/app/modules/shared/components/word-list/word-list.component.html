@@ -1,4 +1,9 @@
 <div class="container">
+  <ng-container *ngIf="isWordFilter">
+    <div class="row mb-2">
+      <app-word-search (wordFilter)="emitWordFilter($event)"></app-word-search>
+    </div>
+  </ng-container>
   <div class="row table-header mb-2">
     <div class="text-center" [ngStyle]="{ width: bigColSize }">Value</div>
     <div class="text-center" [ngStyle]="{ width: bigColSize }">Translation</div>
@@ -24,4 +29,9 @@
       ></app-single-word>
     </div>
   </ng-container>
+  <div class="row mt-2">
+    <div class="offset-md-9 col-md-3">
+      <app-page-picker [numberOfWords]="numberOfWords" (pageSelection)="selectPage($event)"></app-page-picker>
+    </div>
+  </div>
 </div>

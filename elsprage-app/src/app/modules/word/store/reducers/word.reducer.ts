@@ -8,12 +8,18 @@ export interface WordState {
   languages: Language[];
   words: Word[];
   selectedWord: Word;
+  page: number;
+  pageSize: number;
+  numberOfWords: number;
 }
 
 export const initialState: WordState = {
   error: '',
   languages: [],
   words: [],
+  page: 0,
+  pageSize: 0,
+  numberOfWords: 0,
   selectedWord: {} as Word,
 };
 
@@ -49,6 +55,9 @@ export const wordReducer = createReducer<WordState>(
       ...state,
       words: action.usersWordsResponse.words,
       error: '',
+      pageSize:action.usersWordsResponse.pageSize,
+      page:action.usersWordsResponse.page,
+      numberOfWords:action.usersWordsResponse.numberOfWords
     };
   }),
   on(WordApiAction.getWordsFailure, (state, action): WordState => {

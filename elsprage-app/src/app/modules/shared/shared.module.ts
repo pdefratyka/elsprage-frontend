@@ -8,6 +8,8 @@ import { TopMenuComponent } from './containers/top-menu/top-menu.component';
 import { RouterModule } from '@angular/router';
 import { WordListComponent } from './components/word-list/word-list.component';
 import { SingleWordComponent } from './components/word-list/single-word/single-word.component';
+import { WordSearchComponent } from './components/word-list/word-search/word-search.component';
+import { PagePickerComponent } from './components/word-list/page-picker/page-picker.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,8 @@ import { SingleWordComponent } from './components/word-list/single-word/single-w
     TopMenuComponent,
     WordListComponent,
     SingleWordComponent,
+    WordSearchComponent,
+    PagePickerComponent,
   ],
   imports: [CommonModule, FormsModule, RouterModule, ReactiveFormsModule],
   exports: [
