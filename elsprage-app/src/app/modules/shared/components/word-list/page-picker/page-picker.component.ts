@@ -42,7 +42,6 @@ export class PagePickerComponent implements OnInit, OnChanges {
   }
 
   selectPage(page: number): void {
-    console.log(page);
     this.selectedPage = page;
     this.setPages();
     this.pageSelection.emit(page);

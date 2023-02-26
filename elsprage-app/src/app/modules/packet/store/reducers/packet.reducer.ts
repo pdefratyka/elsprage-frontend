@@ -57,18 +57,32 @@ export const packetReducer = createReducer<PacketState>(
       error: '',
     };
   }),
+  on(PacketPageAction.removeWordFromPacket, (state, action): PacketState => {
+    const tempAddedWords = [...state.addedWords];
+    const tempWordsToAdd = [...state.wordsToAdd];
+    tempWordsToAdd.push(action.word);
+    const index = tempAddedWords.findIndex((w) => w.id === action.word.id);
+    tempAddedWords.splice(index, 1);
+    return {
+      ...state,
+      addedWords: tempAddedWords,
+      wordsToAdd: tempWordsToAdd,
+      error: '',
+    };
+  }),
   on(PacketPageAction.initCreatePacket, (state, action): PacketState => {
     return {
       ...state,
       addedWords: [],
-      wordsToAdd: action.wordsToAdd,
+      wordsToAdd: [],
       error: '',
     };
   }),
   on(PacketPageAction.initReloadWordsToAdd, (state, action): PacketState => {
+    const tempArray = action.wordsToAdd.filter((w) => !state.addedWords.find(a=>a.id===w.id));
     return {
       ...state,
-      wordsToAdd: action.wordsToAdd,
+      wordsToAdd: tempArray,
       error: '',
     };
   })

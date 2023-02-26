@@ -17,12 +17,12 @@ export const addWordToPacket = createAction(
 );
 
 export const removeWordFromPacket = createAction(
-  `[${PACKET_PAGE}] Remove Word From Packet`
+  `[${PACKET_PAGE}] Remove Word From Packet`,
+  props<{ word: Word }>()
 );
 
 export const initCreatePacket = createAction(
-  `[${PACKET_PAGE}] Init Create Packet`,
-  props<{ wordsToAdd: Word[] }>()
+  `[${PACKET_PAGE}] Init Create Packet`
 );
 
 export const initReloadWordsToAdd = createAction(

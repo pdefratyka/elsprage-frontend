@@ -18,3 +18,12 @@ export const getPacketState = createFeatureSelector<PacketState>('packet');
 export const getPackets = createSelector(getPacketState, (state) => {
   return state.packetReducer.packets;
 });
+
+export const getWordsToAdd = createSelector(getPacketState, (state) => {
+  return state.packetReducer.wordsToAdd;
+});
+
+export const getAddedWords = createSelector(getPacketState, (state) => {
+  return state.packetReducer.addedWords;
+});
+

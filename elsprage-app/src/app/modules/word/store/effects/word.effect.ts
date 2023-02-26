@@ -20,7 +20,6 @@ export class WordEffects {
         this.wordApiService.saveWord(action.word).pipe(
           map((word) => {
             this.toastService.success('Word has been saved');
-            console.log(word);
             return WordApiAction.saveWordSuccess({
               word,
             });
@@ -41,7 +40,6 @@ export class WordEffects {
         this.wordApiService.updateWord(action.word).pipe(
           map((word) => {
             this.toastService.success('Word has been updated');
-            console.log(word);
             return WordApiAction.updateWordSuccess({
               word,
             });

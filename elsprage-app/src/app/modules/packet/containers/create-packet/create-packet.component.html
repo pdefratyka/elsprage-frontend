@@ -9,10 +9,13 @@
         <app-packet-form
           [languages]="languages$ | async"
           [wordsToAdd]="words$ | async"
+          [addedWords]="addedWords$ | async"
           [numberOfWords]="numberOfWords$ | async"
           (packetCreate)="createPacket($event)"
           (pageSelection)="selectPage($event)"
           (wordFilter)="getWordsByQuery($event)"
+          (wordToPacketAddition)="addWordToPacket($event)"
+          (wordRemoveFromPacket)="removeWordFromPacket($event)"
         ></app-packet-form>
       </div>
     </div>

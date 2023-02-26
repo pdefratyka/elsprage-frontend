@@ -15,6 +15,8 @@ export class PacketFormComponent implements OnInit {
   @Input()
   wordsToAdd: Word[];
   @Input()
+  addedWords: Word[];
+  @Input()
   numberOfWords: number;
   @Output()
   packetCreate: EventEmitter<PacketRequest> = new EventEmitter<PacketRequest>();
@@ -22,8 +24,12 @@ export class PacketFormComponent implements OnInit {
   pageSelection: EventEmitter<number> = new EventEmitter<number>();
   @Output()
   wordFilter: EventEmitter<string> = new EventEmitter<string>();
+  @Output()
+  wordToPacketAddition: EventEmitter<Word> = new EventEmitter<Word>();
+  @Output()
+  wordRemoveFromPacket: EventEmitter<Word> = new EventEmitter<Word>();
   packetForm: FormGroup;
-  addedWords: Word[] = [];
+  // addedWords: Word[] = [];
 
   constructor(private readonly formBuilder: FormBuilder) {}
 
@@ -36,14 +42,16 @@ export class PacketFormComponent implements OnInit {
   }
 
   addWord(word: Word): void {
-    const isWordAlreadyAdded = this.addedWords.includes(word);
-    if (!isWordAlreadyAdded) {
-      this.addedWords.push(word);
-    }
+    // const isWordAlreadyAdded = this.addedWords.includes(word);
+    // if (!isWordAlreadyAdded) {
+    //   this.addedWords.push(word);
+    // }
+    this.wordToPacketAddition.emit(word);
   }
 
   removeWord(word: Word): void {
-    this.addedWords = this.addedWords.filter((w) => w.id !== word.id);
+    // this.addedWords = this.addedWords.filter((w) => w.id !== word.id);
+    this.wordRemoveFromPacket.emit(word);
   }
 
   selectPage(page: number): void {

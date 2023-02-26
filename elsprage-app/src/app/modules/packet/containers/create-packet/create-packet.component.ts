@@ -11,7 +11,8 @@ import {
   WordPageAction,
   WordState,
 } from 'src/app/modules/word/store';
-import { PacketPageAction } from '../../store';
+import { getAddedWords, getWordsToAdd, PacketPageAction } from '../../store';
+import { PacketState } from '../../store/reducers/packet.reducer';
 
 @Component({
   selector: 'app-create-packet',
@@ -21,16 +22,27 @@ import { PacketPageAction } from '../../store';
 export class CreatePacketComponent {
   languages$: Observable<Language[]>;
   words$: Observable<Word[]>;
+  addedWords$: Observable<Word[]>;
   numberOfWords$: Observable<number>;
   currentQuery: string = '';
 
-  constructor(private store: Store<WordState>) {
+  constructor(
+    private store: Store<WordState>,
+    private packetStore: Store<PacketState>
+  ) {
     this.languages$ = this.store.select(getLanguages);
-    this.words$ = this.store.select(getWords);
+    this.words$ = this.packetStore.select(getWordsToAdd);
+    this.addedWords$ = this.packetStore.select(getAddedWords);
     this.numberOfWords$ = this.store.select(getNumberOfWords);
+    this.store.select(getWords).subscribe((r) => {
+      this.store.dispatch(
+        PacketPageAction.initReloadWordsToAdd({ wordsToAdd: r })
+      );
+    });
   }
 
   ngOnInit(): void {
+    this.store.dispatch(PacketPageAction.initCreatePacket());
     this.store.dispatch(WordPageAction.getWords({ query: '', page: 0 }));
     this.store.dispatch(WordPageAction.getLanguages());
   }
@@ -48,5 +60,13 @@ export class CreatePacketComponent {
     this.store.dispatch(
       WordPageAction.getWords({ query: this.currentQuery, page })
     );
+  }
+
+  addWordToPacket(word: Word): void {
+    this.store.dispatch(PacketPageAction.addWordToPacket({ word }));
+  }
+
+  removeWordFromPacket(word: Word): void {
+    this.store.dispatch(PacketPageAction.removeWordFromPacket({ word }));
   }
 }
