@@ -23,3 +23,23 @@ export const getUsersPacketsFailure = createAction(
   `[${PACKET_API}] Get Packets Failure`,
   props<{ error: Error }>()
 );
+
+export const getPacketByIdSuccess = createAction(
+  `[${PACKET_API}] Get Packets By Id Success`,
+  props<{ packet: Packet }>()
+);
+
+export const getPacketByIdFailure = createAction(
+  `[${PACKET_API}] Get Packet By Id Failure`,
+  props<{ error: Error }>()
+);
+
+export const removePacketSuccess = createAction(
+  `[${PACKET_API}] Remove Packet Success`,
+  props<{ packetId: number }>()
+);
+
+export const removePacketFailure = createAction(
+  `[${PACKET_API}] Remove Packet Failure`,
+  props<{ error: Error }>()
+);

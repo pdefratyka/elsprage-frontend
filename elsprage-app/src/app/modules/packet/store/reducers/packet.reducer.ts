@@ -8,6 +8,7 @@ export interface PacketState {
   packets: Packet[];
   addedWords: Word[];
   wordsToAdd: Word[];
+  selectedPacket: Packet;
 }
 
 export const initialState: PacketState = {
@@ -15,6 +16,7 @@ export const initialState: PacketState = {
   packets: [],
   wordsToAdd: [],
   addedWords: [],
+  selectedPacket: {} as Packet,
 };
 
 export const packetReducer = createReducer<PacketState>(
@@ -79,11 +81,45 @@ export const packetReducer = createReducer<PacketState>(
     };
   }),
   on(PacketPageAction.initReloadWordsToAdd, (state, action): PacketState => {
-    const tempArray = action.wordsToAdd.filter((w) => !state.addedWords.find(a=>a.id===w.id));
+    const tempArray = action.wordsToAdd.filter(
+      (w) => !state.addedWords.find((a) => a.id === w.id)
+    );
     return {
       ...state,
       wordsToAdd: tempArray,
       error: '',
+    };
+  }),
+  on(PacketApiAction.getPacketByIdSuccess, (state, action): PacketState => {
+    const tempArray = action.packet.words.filter(
+      (w) => !state.addedWords.find((a) => a.id === w.id)
+    );
+    return {
+      ...state,
+      selectedPacket: action.packet,
+      addedWords: action.packet.words,
+      wordsToAdd: tempArray,
+      error: '',
+    };
+  }),
+  on(PacketApiAction.getUsersPacketsFailure, (state, action): PacketState => {
+    return {
+      ...state,
+      error: action.error.message,
+    };
+  }),
+  on(PacketApiAction.removePacketSuccess, (state, action): PacketState => {
+    const packets = state.packets.filter((p) => p.id !== action.packetId);
+    return {
+      ...state,
+      packets: packets,
+      error: '',
+    };
+  }),
+  on(PacketApiAction.removePacketFailure, (state, action): PacketState => {
+    return {
+      ...state,
+      error: action.error.message,
     };
   })
 );

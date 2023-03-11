@@ -24,4 +24,16 @@ export class PacketApiService {
       PacketApiService.PACKETS_URL
     );
   }
+
+  getPacketById(packetId: number): Observable<Packet> {
+    return this.httpClient.get<Packet>(
+      `${PacketApiService.PACKETS_URL}/${packetId}`
+    );
+  }
+
+  removePacket(packetId: number): Observable<void> {
+    return this.httpClient.delete<void>(
+      `${PacketApiService.PACKETS_URL}/${packetId}`
+    );
+  }
 }

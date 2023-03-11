@@ -9,6 +9,11 @@ export const savePacket = createAction(
   props<{ packetRequest: PacketRequest }>()
 );
 
+export const getPacketById = createAction(
+  `[${PACKET_PAGE}] Get Packet by id`,
+  props<{ packetId: number }>()
+);
+
 export const getUsersPackets = createAction(`[${PACKET_PAGE}] Get Packets`);
 
 export const addWordToPacket = createAction(
@@ -28,4 +33,9 @@ export const initCreatePacket = createAction(
 export const initReloadWordsToAdd = createAction(
   `[${PACKET_PAGE}] Init Reload Words To Add`,
   props<{ wordsToAdd: Word[] }>()
+);
+
+export const removePacket = createAction(
+  `[${PACKET_PAGE}] Remove Packet`,
+  props<{ packetId: number }>()
 );

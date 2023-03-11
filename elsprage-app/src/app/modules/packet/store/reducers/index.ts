@@ -27,3 +27,6 @@ export const getAddedWords = createSelector(getPacketState, (state) => {
   return state.packetReducer.addedWords;
 });
 
+export const getPacket = createSelector(getPacketState, (state) => {
+  return state.packetReducer.selectedPacket;
+});

@@ -1,0 +1,85 @@
+<div class="container packet-form">
+  <div class="row"></div>
+  <form [formGroup]="packetForm">
+    <div class="form-group row mt-2">
+      <label for="name" class="col-sm-1 col-form-label field-required"
+        >Name:</label
+      >
+      <div class="col-sm-7">
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          formControlName="name"
+          #valueInput
+        />
+      </div>
+      <label for="valueLanguage" class="col-sm-1 col-form-label field-required"
+        >Value:</label
+      >
+      <div class="col-sm-1">
+        <select
+          id="valueLanguage"
+          class="form-control"
+          #valueLanguage
+        >
+          <option
+            *ngFor="let language of languages; index as i"
+            value="{{ i }}"
+            [selected]="language.id === packet.valueLanguage?.id"
+          >
+            {{ language.symbol }}
+          </option>
+        </select>
+      </div>
+      <label
+        for="translationLanguage"
+        class="col-sm-1 col-form-label field-required"
+        >Translation:</label
+      >
+      <div class="col-sm-1">
+        <select
+          class="form-control"
+          id="translationLanguage"
+          #translationLanguage
+        >
+          <option
+            *ngFor="let language of languages; index as i"
+            value="{{ i }}"
+            [selected]="language.id === packet.translationLanguage?.id"
+          >
+            {{ language.symbol }}
+          </option>
+        </select>
+      </div>
+    </div>
+  </form>
+  <div class="row added-words mt-2">
+    <app-shared-word-list
+      [words]="addedWords"
+      [isSecondaryActionButton]="true"
+      (secondaryAction)="removeWord($event)"
+    ></app-shared-word-list>
+  </div>
+  <div class="row words-to-add mt-2">
+    <app-shared-word-list
+      [words]="wordsToAdd"
+      [isMainActionButton]="true"
+      [isWordFilter]="true"
+      [numberOfWords]="numberOfWords"
+      (mainAction)="addWord($event)"
+      (pageSelection)="selectPage($event)"
+      (wordFilter)="getWordsByQuery($event)"
+    ></app-shared-word-list>
+  </div>
+  <div class="row mt-2">
+    <div class="offset-md-10 col-md-2">
+      <input
+        type="button"
+        class="btn btn-success"
+        value="Save"
+        (click)="createPacket()"
+      />
+    </div>
+  </div>
+</div>

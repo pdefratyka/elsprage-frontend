@@ -51,4 +51,42 @@ export class PacketsEffects {
       )
     );
   });
+
+  getPacketById$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(PacketPageAction.getPacketById),
+      concatMap((action) =>
+        this.packetApiService.getPacketById(action.packetId).pipe(
+          map((packet) => {
+            return PacketApiAction.getPacketByIdSuccess({
+              packet,
+            });
+          }),
+          catchError((error) => {
+            this.toastService.error(error);
+            return of(PacketApiAction.getPacketByIdFailure({ error }));
+          })
+        )
+      )
+    );
+  });
+
+  removePacket$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(PacketPageAction.removePacket),
+      concatMap((action) =>
+        this.packetApiService.removePacket(action.packetId).pipe(
+          map(() => {
+            return PacketApiAction.removePacketSuccess({
+              packetId: action.packetId,
+            });
+          }),
+          catchError((error) => {
+            this.toastService.error(error);
+            return of(PacketApiAction.removePacketFailure({ error }));
+          })
+        )
+      )
+    );
+  });
 }

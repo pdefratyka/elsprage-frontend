@@ -1,14 +1,20 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-3">Name</div>
+    <div class="col-md-4">Name</div>
     <div class="col-md-3">Description</div>
-    <div class="col-md-2">Value Language</div>
-    <div class="col-md-2">Translation Language</div>
-    <div class="col-md-2">Size</div>
+    <div class="col-md-1">Value Language</div>
+    <div class="col-md-1">Translation Language</div>
+    <div class="col-md-1">Size</div>
+    <div class="col-md-1">Edit</div>
+    <div class="col-md-1">Remove</div>
   </div>
   <ng-container *ngFor="let packet of packets">
     <div class="row" class="single-packet-row">
-      <app-single-packet [packet]="packet"></app-single-packet>
+      <app-single-packet
+        [packet]="packet"
+        (packetEdit)="editPacket($event)"
+        (packetRemove)="removePacket($event)"
+      ></app-single-packet>
     </div>
   </ng-container>
   <div class="row mt-2">

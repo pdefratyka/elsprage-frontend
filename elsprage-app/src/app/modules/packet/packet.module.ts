@@ -12,6 +12,8 @@ import { SharedModule } from '../shared/shared.module';
 import { PacketFormComponent } from './components/packet-form/packet-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { wordEffects, wordReducer } from '../word/store';
+import { EditPacketComponent } from './containers/edit-packet/edit-packet.component';
+import { EditPacketFormComponent } from './components/edit-packet-form/edit-packet-form.component';
 @NgModule({
   declarations: [
     CreatePacketComponent,
@@ -19,6 +21,8 @@ import { wordEffects, wordReducer } from '../word/store';
     PacketListComponent,
     SinglePacketComponent,
     PacketFormComponent,
+    EditPacketComponent,
+    EditPacketFormComponent,
   ],
   imports: [
     CommonModule,
