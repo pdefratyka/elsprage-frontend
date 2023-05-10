@@ -1,0 +1,15 @@
+<div class="containter-fluid learning-page">
+    <div class="container">
+        <button class="btn btn-danger" (click)="cancelLearning()">X</button>
+    </div>
+    <ng-container *ngIf="selectedMode===null">
+        <app-learning-mode (learningModeSelection)="selectMode($event)"></app-learning-mode>
+    </ng-container>
+    <ng-container *ngIf="selectedMode!==null && (this.learningWords$|async).length>0">
+        <app-learning-translate [learningWords]="learningWords$ | async"
+            (finishLearning)="finishLearning($event)"></app-learning-translate>
+    </ng-container>
+    <ng-container *ngIf="learningResult">
+        <app-learning-result [learningResult]="learningResult" (resultSave)="saveResult()"></app-learning-result>
+    </ng-container>
+</div>

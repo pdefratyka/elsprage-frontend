@@ -1,0 +1,18 @@
+@use './../../../../../assets/styles/variables' as v;
+
+// .container {
+//     position: relative;
+//     /* Set the height of the container div */
+// }
+
+.btn {
+    position: absolute;
+    top: 90px;
+    right: 0;
+}
+
+
+.learning-page {
+    width: 100%;
+    background-color: v.$background-color-primary;
+}

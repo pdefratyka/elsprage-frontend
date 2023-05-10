@@ -15,6 +15,11 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'learn',
+    loadChildren: () =>
+      import('./modules/learning/learning.module').then((module) => module.LearningModule),
+  },
+  {
     path: '',
     loadChildren: () =>
       import('./modules/user/user.module').then((module) => module.UserModule),

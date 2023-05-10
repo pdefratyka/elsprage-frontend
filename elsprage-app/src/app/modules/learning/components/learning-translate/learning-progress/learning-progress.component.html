@@ -1,0 +1,10 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>{{numberOfCorrectAnswers}}/{{numberOfWords}}</h2>
+        </div>
+        <div class="col-md-12" *ngIf="numberOfAttempts>0">
+            <h2>{{100*numberOfCorrectAnswers/numberOfAttempts | number: '1.0-2'}}%</h2>
+        </div>
+    </div>
+</div>
