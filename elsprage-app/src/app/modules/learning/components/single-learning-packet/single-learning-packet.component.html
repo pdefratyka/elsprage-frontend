@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="row align-items-center" [routerLink]="['/learn/' + learningPacket.packetId]">
+        <div class="col-md-4">
+            <p>{{ learningPacket.packetName }}</p>
+        </div>
+        <div class="col-md-1">
+            <p>{{ learningPacket.valueLanguage }}</p>
+        </div>
+        <div class="col-md-1">
+            <p>{{ learningPacket.translationLanguage }}</p>
+        </div>
+        <div class="col-md-1">
+            <p>{{ learningPacket.wordsCount}}</p>
+        </div>
+        <div class="col-md-3">
+            <p>{{ learningPacket.lastLearned | date: 'dd/MM/yyyy'}}</p>
+        </div>
+        <div class="col-md-1">
+            <p>{{ learningPacket.lastScore}}</p>
+        </div>
+        <div class="col-md-1">
+            <p>{{ learningPacket.bestScore}}</p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,18 @@
+<div class="container-fluid">
+    <ng-container *ngIf="learningWords?.length>0 && learningWordIndex<learningWords?.length">
+        <div class="row">
+            <div class="col-md-12">
+                <app-learning-progress [numberOfWords]="numberOfWords" [numberOfAttempts]="numberOfAttempts"
+                    [numberOfCorrectAnswers]="numberOfCorrectAnswers">
+                </app-learning-progress>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <app-learning-translate-single [learningWord]="learningWords[learningWordIndex]"
+                    (nextWord)="selectNextWord($event)">
+                </app-learning-translate-single>
+            </div>
+        </div>
+    </ng-container>
+</div>
