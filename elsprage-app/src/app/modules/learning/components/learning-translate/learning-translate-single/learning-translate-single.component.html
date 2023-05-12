@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <div class="row text-center">
         <div class="offset-md-3 col-md-6">
-            <h2>{{learningWord.value}}</h2>
+            <h2>{{learningWord.value |  textWithSynonyms }}</h2>
         </div>
     </div>
     <div class="row text-center">
@@ -28,7 +28,7 @@
                 </ng-container>
                 <ng-container *ngIf="!correctAnswer">
                     <h2>Wrong Answer. Correct answer: </h2>
-                    <h2>{{learningWord.answer}}</h2>
+                    <h2>{{learningWord.answer | textWithSynonyms}}</h2>
                 </ng-container>
                 <input type="button" class="btn btn-success" value="Next" (click)="selectNextWord()" />
                 <h2>{{learningWord.example}}</h2>

@@ -28,7 +28,7 @@ import { LearningResultComponent } from './components/learning-result/learning-r
     LearningTranslateComponent,
     LearningTranslateSingleComponent,
     LearningProgressComponent,
-    LearningResultComponent
+    LearningResultComponent,
   ],
   imports: [
     CommonModule,

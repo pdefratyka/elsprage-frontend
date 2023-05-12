@@ -24,7 +24,6 @@ export class LearningTranslateSingleComponent implements OnInit {
 
   }
 
-
   ngOnInit(): void {
   }
 
@@ -36,7 +35,8 @@ export class LearningTranslateSingleComponent implements OnInit {
   }
 
   checkAnswer(): void {
-    if (this.getYourAnswer() === this.learningWord.answer) {
+    let possibleAnswers = this.learningWord.answer.split(';');
+    if (possibleAnswers.includes(this.getYourAnswer())) {
       this.correctAnswer = true;
       this.soundEffectService.playCorrectAnswer();
     } else {

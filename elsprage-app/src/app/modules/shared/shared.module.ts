@@ -10,6 +10,7 @@ import { WordListComponent } from './components/word-list/word-list.component';
 import { SingleWordComponent } from './components/word-list/single-word/single-word.component';
 import { WordSearchComponent } from './components/word-list/word-search/word-search.component';
 import { PagePickerComponent } from './components/word-list/page-picker/page-picker.component';
+import { TextWithSynonymsPipe } from './pipes/text-with-synonyms.pipe';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { PagePickerComponent } from './components/word-list/page-picker/page-pic
     SingleWordComponent,
     WordSearchComponent,
     PagePickerComponent,
+    TextWithSynonymsPipe,
   ],
   imports: [CommonModule, FormsModule, RouterModule, ReactiveFormsModule],
   exports: [
@@ -28,6 +30,7 @@ import { PagePickerComponent } from './components/word-list/page-picker/page-pic
     SideMenuComponent,
     TopMenuComponent,
     WordListComponent,
+    TextWithSynonymsPipe
   ],
 })
 export class SharedModule {}
