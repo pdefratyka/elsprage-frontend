@@ -27,9 +27,7 @@ export class LearningTranslateComponent implements OnInit {
   }
 
   selectNextWord(result: boolean): void {
-    this.numberOfAttempts++;
     if (result) {
-      this.numberOfCorrectAnswers++;
       const newLearningWords = [...this.learningWords];
       newLearningWords.splice(this.learningWordIndex, 1);
       this.learningWords = newLearningWords;
@@ -42,6 +40,13 @@ export class LearningTranslateComponent implements OnInit {
     }
     if (this.learningWords.length === 0) {
       this.emitFinishLearning();
+    }
+  }
+
+  checkAnswer(correctAnswer: boolean): void {
+    this.numberOfAttempts++;
+    if (correctAnswer) {
+      this.numberOfCorrectAnswers++;
     }
   }
 

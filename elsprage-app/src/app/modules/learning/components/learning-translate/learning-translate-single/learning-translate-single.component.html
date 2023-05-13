@@ -1,38 +1,46 @@
-<div class="container-fluid">
+<div class="container-fluid learning-translate" [ngClass]="{
+    'correct-answer-container': checkedAnswer && correctAnswer,
+    'wrong-answer-container': checkedAnswer && !correctAnswer
+  }">
+
     <div class="row text-center">
-        <div class="offset-md-3 col-md-6">
-            <h2>{{learningWord.value | firstWord}}</h2>
+        <p>{{learningWord.value | firstWord}}</p>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
+                (keyup.enter)="handleOnEnter()" placeholder="Answer" #yourAnswer appUmlautKey>
         </div>
     </div>
-    <div class="row text-center">
-        <div class="offset-md-3 col-md-6">
-            <div class="input-group input-group-sm mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroup-sizing-sm">Answer</span>
-                </div>
-                <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
-                    (keyup.enter)="handleOnEnter()" #yourAnswer>
+
+    <ng-container *ngIf="!checkedAnswer">
+        <div class="row mt-2 justify-content-center">
+            <div class="col-md-6">
+                <app-german-keyboard (selectKey)="onGermanKeySelect($event)">
+                </app-german-keyboard>
             </div>
         </div>
-        <app-german-keyboard (selectKey)="onGermanKeySelect($event)">
-        </app-german-keyboard>
-    </div>
-    <div class="row text-center">
-        <div class="offset-md-3 col-md-6">
+    </ng-container>
+
+    <div class="row mt-2 justify-content-center text-center">
+        <div class="col-md-12">
             <ng-container *ngIf="!checkedAnswer">
                 <input type="button" class="btn btn-success" value="Check" (click)="checkAnswer()" />
             </ng-container>
             <ng-container *ngIf="checkedAnswer">
-                <ng-container *ngIf="correctAnswer">
-                    <h2>Correct Answer</h2>
-                </ng-container>
                 <ng-container *ngIf="!correctAnswer">
-                    <h2>Wrong Answer. Correct answer: </h2>
-                    <h2>{{learningWord.answer | textWithSynonyms}}</h2>
+                    <span>{{learningWord.answer | textWithSynonyms}}</span>
                 </ng-container>
-                <input type="button" class="btn btn-success" value="Next" (click)="selectNextWord()" />
-                <h2>{{learningWord.example}}</h2>
-                <img src="data:image/jpg;base64, {{ learningWord.image }}" class="image" />
+                <div class="mt-2">
+                    <input type="button" class="btn btn-success" value="Next" (click)="selectNextWord()" />
+                </div>
+                <div class="mt-2">
+                    <img src="data:image/jpg;base64, {{ learningWord.image }}" class="word-image" />
+                </div>
+                <div class="mt-2">
+                    <p class="example">{{learningWord.example}}</p>
+                </div>
             </ng-container>
         </div>
     </div>
