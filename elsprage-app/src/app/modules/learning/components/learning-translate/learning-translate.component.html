@@ -7,10 +7,11 @@
                 </app-learning-progress>
             </div>
         </div>
-        <div class="row">
+        <div class="row mt-2">
             <div class="col-md-12">
                 <app-learning-translate-single [learningWord]="learningWords[learningWordIndex]"
-                    (nextWord)="selectNextWord($event)">
+                    (nextWord)="selectNextWord($event)"
+                    (answerCheck)="checkAnswer($event)">
                 </app-learning-translate-single>
             </div>
         </div>

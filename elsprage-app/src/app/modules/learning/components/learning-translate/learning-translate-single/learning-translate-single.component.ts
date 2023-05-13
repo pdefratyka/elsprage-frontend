@@ -17,6 +17,9 @@ export class LearningTranslateSingleComponent implements OnInit {
   @Output()
   nextWord: EventEmitter<boolean> = new EventEmitter<boolean>();
 
+  @Output()
+  answerCheck: EventEmitter<boolean> = new EventEmitter<boolean>();
+
   correctAnswer: boolean = false;
   checkedAnswer: boolean = false;
 
@@ -44,6 +47,7 @@ export class LearningTranslateSingleComponent implements OnInit {
       this.soundEffectService.playWrongAnswer();
     }
     this.checkedAnswer = true;
+    this.answerCheck.emit(this.correctAnswer);
   }
 
   private getYourAnswer(): string {
