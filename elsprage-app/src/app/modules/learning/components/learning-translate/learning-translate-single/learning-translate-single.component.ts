@@ -14,6 +14,9 @@ export class LearningTranslateSingleComponent implements OnInit {
   @Input()
   learningWord: LearningWord;
 
+  @Input()
+  answerLanguage: string;
+
   @Output()
   nextWord: EventEmitter<boolean> = new EventEmitter<boolean>();
 
@@ -39,7 +42,9 @@ export class LearningTranslateSingleComponent implements OnInit {
 
   checkAnswer(): void {
     let possibleAnswers = this.learningWord.answer.split(';');
-    if (possibleAnswers.includes(this.getYourAnswer())) {
+    possibleAnswers = possibleAnswers.map(answer => answer.toUpperCase());
+    let yourAnswer = this.getYourAnswer().toUpperCase();
+    if (possibleAnswers.includes(yourAnswer)) {
       this.correctAnswer = true;
       this.soundEffectService.playCorrectAnswer();
     } else {

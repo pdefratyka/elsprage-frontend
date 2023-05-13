@@ -12,6 +12,7 @@ import { WordSearchComponent } from './components/word-list/word-search/word-sea
 import { PagePickerComponent } from './components/word-list/page-picker/page-picker.component';
 import { TextWithSynonymsPipe } from './pipes/text-with-synonyms.pipe';
 import { FirstWordPipe } from './pipes/first-word.pipe';
+import { UmlautKeyDirective } from './directives/umlaut-key.directive';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { FirstWordPipe } from './pipes/first-word.pipe';
     PagePickerComponent,
     TextWithSynonymsPipe,
     FirstWordPipe,
+    UmlautKeyDirective,
   ],
   imports: [CommonModule, FormsModule, RouterModule, ReactiveFormsModule],
   exports: [
@@ -33,7 +35,8 @@ import { FirstWordPipe } from './pipes/first-word.pipe';
     TopMenuComponent,
     WordListComponent,
     TextWithSynonymsPipe,
-    FirstWordPipe
+    FirstWordPipe,
+    UmlautKeyDirective
   ],
 })
 export class SharedModule {}
