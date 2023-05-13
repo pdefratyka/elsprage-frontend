@@ -1,12 +1,12 @@
-<div class="container german-keyboard">
+<div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-2 mt-2 mb-2">
-            <app-key [keyValue]="'Shift'" (selectKey)="shiftOnAction()"></app-key>
-        </div>
-        <ng-container *ngFor="let key of keyValues">
-            <div class="col-md-1 mt-2 mb-2">
-                <app-key [keyValue]="key" (selectKey)="germanKeyOnAction($event)"></app-key>
+        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+            <div class="btn-group" role="group" aria-label="First group">
+                <app-key [keyValue]="'Shift'" (selectKey)="shiftOnAction()"></app-key>
+                <ng-container *ngFor="let key of keyValues">
+                    <app-key [keyValue]="key" (selectKey)="germanKeyOnAction($event)"></app-key>
+                </ng-container>
             </div>
-        </ng-container>
+        </div>
     </div>
 </div>
