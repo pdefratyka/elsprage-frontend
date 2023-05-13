@@ -14,6 +14,6 @@ export class SynonymsService {
   }
 
   public static addSpaces(text: string): string {
-    return text.replace(SynonymsService.DELIMITER, ", ");
+    return text.replace(/;/g, ", ");
   }
 }

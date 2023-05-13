@@ -11,6 +11,7 @@ import { SingleWordComponent } from './components/word-list/single-word/single-w
 import { WordSearchComponent } from './components/word-list/word-search/word-search.component';
 import { PagePickerComponent } from './components/word-list/page-picker/page-picker.component';
 import { TextWithSynonymsPipe } from './pipes/text-with-synonyms.pipe';
+import { FirstWordPipe } from './pipes/first-word.pipe';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { TextWithSynonymsPipe } from './pipes/text-with-synonyms.pipe';
     WordSearchComponent,
     PagePickerComponent,
     TextWithSynonymsPipe,
+    FirstWordPipe,
   ],
   imports: [CommonModule, FormsModule, RouterModule, ReactiveFormsModule],
   exports: [
@@ -30,7 +32,8 @@ import { TextWithSynonymsPipe } from './pipes/text-with-synonyms.pipe';
     SideMenuComponent,
     TopMenuComponent,
     WordListComponent,
-    TextWithSynonymsPipe
+    TextWithSynonymsPipe,
+    FirstWordPipe
   ],
 })
 export class SharedModule {}
