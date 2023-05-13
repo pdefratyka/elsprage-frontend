@@ -16,6 +16,8 @@ export class WordListComponent implements OnInit {
   @Input()
   isImage: boolean;
   @Input()
+  isUsed: boolean;
+  @Input()
   isWordFilter: boolean;
   @Input()
   numberOfWords: number;
@@ -67,6 +69,9 @@ export class WordListComponent implements OnInit {
     }
     if (this.isImage) {
       this.numberOfBigColumns++;
+    }
+    if (this.isUsed) {
+      this.numberOfSmallColumns++;
     }
   }
 }

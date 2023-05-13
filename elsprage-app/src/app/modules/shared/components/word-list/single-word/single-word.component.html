@@ -12,6 +12,11 @@
     <div class="text-center" [ngStyle]="{ width: smallColSize }">
       <p>{{ word.translationLanguage.symbol }}</p>
     </div>
+    <ng-container *ngIf="isUsed">
+      <div class="text-center" [ngStyle]="{ width: smallColSize }">
+        <p>{{ word.used }}</p>
+      </div>
+    </ng-container>
     <ng-container *ngIf="isImage && word.imageDataEncoded !== ''">
       <div class="text-center image-container" [ngStyle]="{ width: bigColSize }">
         <img src="data:image/jpg;base64, {{ word.imageDataEncoded }}" class="image" />

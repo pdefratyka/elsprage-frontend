@@ -15,6 +15,8 @@ export class SingleWordComponent implements OnInit {
   isSecondaryActionButton: boolean;
   @Input()
   isImage: boolean;
+  @Input()
+  isUsed: boolean;
   bigColSize = '0%';
   smallColSize = '8.3%';
   numberOfSmallColumns: number;
@@ -51,6 +53,9 @@ export class SingleWordComponent implements OnInit {
     }
     if (this.isImage) {
       this.numberOfBigColumns++;
+    }
+    if (this.isUsed) {
+      this.numberOfSmallColumns++;
     }
   }
 }

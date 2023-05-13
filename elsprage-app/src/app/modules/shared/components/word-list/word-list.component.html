@@ -13,6 +13,9 @@
     <div class="text-center" [ngStyle]="{ width: smallColSize }">
       Tran. Lang.
     </div>
+    <div *ngIf="isUsed" class="text-center" [ngStyle]="{ width: smallColSize }">
+      Used
+    </div>
     <div *ngIf="isImage" class="text-center" [ngStyle]="{ width: bigColSize }">
       Image
     </div>
@@ -21,6 +24,7 @@
     <div class="row" class="single-word-row">
       <app-single-word
         [isImage]="isImage"
+        [isUsed]="isUsed"
         [isMainActionButton]="isMainActionButton"
         [isSecondaryActionButton]="isSecondaryActionButton"
         [word]="word"
