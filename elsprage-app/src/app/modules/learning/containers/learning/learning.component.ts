@@ -40,7 +40,6 @@ export class LearningComponent {
   }
 
   saveResult(): void {
-    console.log("save result: {}", this.learningResult);
     this.store.dispatch(LearningPageAction.saveLearningResult({ learningResult: this.learningResult }));
     this.router.navigate(['/learn']);
   }

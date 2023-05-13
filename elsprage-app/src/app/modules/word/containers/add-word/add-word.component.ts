@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Language } from 'src/app/modules/shared/models/language';
 import { Word } from 'src/app/modules/shared/models/word';
 import { getLanguages, WordPageAction, WordState } from '../../store';
+import { SynonymsService } from 'src/app/modules/core/services/helper/synonyms.service';
 
 @Component({
   selector: 'app-add-word',
@@ -22,6 +23,12 @@ export class AddWordComponent implements OnInit {
   }
 
   saveWord(word: Word): void {
+    this.removeUnnecessarySpaces(word);
     this.store.dispatch(WordPageAction.saveWord({ word }));
+  }
+
+  removeUnnecessarySpaces(word: Word): void {
+    word.translation = SynonymsService.removeSpaces(word.translation);
+    word.value = SynonymsService.removeSpaces(word.value);
   }
 }

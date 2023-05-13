@@ -10,6 +10,7 @@ import {
   WordPageAction,
   WordState,
 } from '../../store';
+import { SynonymsService } from 'src/app/modules/core/services/helper/synonyms.service';
 
 @Component({
   selector: 'app-edit-word',
@@ -32,6 +33,12 @@ export class EditWordComponent {
   }
 
   saveWord(word: Word) {
+    this.removeUnnecessarySpaces(word);
     this.store.dispatch(WordPageAction.updateWord({ word }));
+  }
+
+  removeUnnecessarySpaces(word: Word): void {
+    word.translation = SynonymsService.removeSpaces(word.translation);
+    word.value = SynonymsService.removeSpaces(word.value);
   }
 }

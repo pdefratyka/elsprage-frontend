@@ -12,7 +12,6 @@ export class LearningModeComponent {
   learningMode = LearningMode;
 
   selectMode(mode: LearningMode): void {
-    console.log(mode);
     this.learningModeSelection.emit(mode);
   }
 }
