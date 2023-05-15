@@ -22,7 +22,7 @@ export class LearningApiService {
     ).pipe(map(response => response.learningPackets));
   }
 
-  getPacketsWords(packetId: number, learningMode: LearningMode): Observable<LearningWord[]> {
+  getPacketsWords(packetId: number, learningMode: LearningMode, repetitionMode: boolean): Observable<LearningWord[]> {
     let learningModeString = "";
     if (learningMode === LearningMode.TRANSLATION_TO_VALUE) {
       learningModeString = "TRANSLATION_TO_VALUE";
@@ -30,11 +30,12 @@ export class LearningApiService {
       learningModeString = "VALUE_TO_TRANSLATION";
     }
     return this.httpClient.get<PacketsWordsResponse>(
-      `${LearningApiService.LEARNING_URL}/${packetId}/words?learningMode=${learningModeString}`
+      `${LearningApiService.LEARNING_URL}/${packetId}/words?learningMode=${learningModeString}&repetitionMode=${repetitionMode}`
     ).pipe(map(response => response.learningWords));
   }
 
   saveLearningResult(learningResult: LearningResult): Observable<LearningResult> {
+    console.log(learningResult);  
     return this.httpClient.post<any>(
       `${LearningApiService.LEARNING_URL}/result`, learningResult
     );

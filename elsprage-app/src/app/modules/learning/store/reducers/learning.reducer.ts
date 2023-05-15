@@ -51,4 +51,13 @@ export const learningReducer = createReducer<LearningState>(
       error: action.error.message,
     };
   }),
+
+  on(LearningPageAction.cleanLearningState, (state, action): LearningState => {
+    return {
+      ...state,
+      selectedPacket: {
+        words: []
+      }
+    };
+  }),
 );

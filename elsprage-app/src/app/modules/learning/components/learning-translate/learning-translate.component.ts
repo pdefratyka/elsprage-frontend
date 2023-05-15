@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { LearningResult } from 'src/app/modules/shared/models/learningResult';
 import { LearningWord } from 'src/app/modules/shared/models/learningWord';
+import { WordRepetition } from 'src/app/modules/shared/models/wordRepetition';
 
 @Component({
   selector: 'app-learning-translate',
@@ -51,9 +52,13 @@ export class LearningTranslateComponent implements OnInit {
   }
 
   emitFinishLearning(): void {
+    const wordRepetition: WordRepetition[] = Array.from(this.repetitions.entries()).map(([key, value]) => ({
+      wordId: key,
+      numberOfRepetitions: value
+    } as WordRepetition));
     this.finishLearning.emit({
       score: 100 * this.numberOfCorrectAnswers / this.numberOfAttempts,
-      repetitions: this.repetitions
+      repetitions: wordRepetition
     } as LearningResult)
   }
 }

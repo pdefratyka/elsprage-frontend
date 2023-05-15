@@ -36,7 +36,7 @@ export class LearningEffects {
     this.actions$.pipe(
       ofType(LearningPageAction.getPacketsWords),
       switchMap((action) =>
-        this.learningApiService.getPacketsWords(action.packetId, action.learningMode).pipe(
+        this.learningApiService.getPacketsWords(action.packetId, action.learningMode, action.repetitionMode).pipe(
           map(learningWords =>
             LearningApiAction.getPacketsWordsSuccess({ learningWords })
           ),

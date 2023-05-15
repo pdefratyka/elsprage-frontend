@@ -30,17 +30,25 @@ export class LearningComponent {
 
   selectMode(mode: LearningMode): void {
     this.selectedMode = mode;
-    this.store.dispatch(LearningPageAction.getPacketsWords({ packetId: parseInt(this.route.snapshot.paramMap.get('id')), learningMode: mode }));
+    console.log(this.route.snapshot.paramMap);
+    const repetitionMode = this.route.snapshot.paramMap.get('repetition') === 'true' ? true : false;
+    this.store.dispatch(LearningPageAction.getPacketsWords({
+      packetId: parseInt(this.route.snapshot.paramMap.get('id')),
+      learningMode: mode,
+      repetitionMode: repetitionMode
+    }));
   }
 
   finishLearning(learningResult: LearningResult): void {
     this.learningResult = learningResult;
-    this.learningResult.mode = this.selectedMode;
+    this.learningResult.learningMode = this.selectedMode;
     this.learningResult.packetId = parseInt(this.route.snapshot.paramMap.get('id'));
+    this.learningResult.repetition = this.route.snapshot.paramMap.get('repetition') === 'true' ? true : false;
   }
 
   saveResult(): void {
     this.store.dispatch(LearningPageAction.saveLearningResult({ learningResult: this.learningResult }));
+    this.store.dispatch(LearningPageAction.cleanLearningState());
     this.router.navigate(['/learn']);
   }
 }

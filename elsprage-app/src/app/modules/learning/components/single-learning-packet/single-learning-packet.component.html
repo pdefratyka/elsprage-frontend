@@ -12,7 +12,7 @@
         <div class="col-md-1">
             <p>{{ learningPacket.wordsCount}}</p>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-2">
             <p>{{ learningPacket.lastLearned | date: 'dd/MM/yyyy'}}</p>
         </div>
         <div class="col-md-1">
@@ -20,6 +20,10 @@
         </div>
         <div class="col-md-1">
             <p>{{ learningPacket.bestScore}}</p>
+        </div>
+        <div class="col-md-1">
+            <button class="btn btn-primary"
+                [routerLink]="['/learn/' + learningPacket.packetId,{ repetition: 'true' }]">Learn</button>
         </div>
     </div>
 </div>

@@ -1,4 +1,4 @@
 export enum LearningMode {
-    VALUE_TO_TRANSLATION = "Known to foregin",
-    TRANSLATION_TO_VALUE = "Foregin to known"
+    VALUE_TO_TRANSLATION = "VALUE_TO_TRANSLATION",
+    TRANSLATION_TO_VALUE = "TRANSLATION_TO_VALUE"
 }
