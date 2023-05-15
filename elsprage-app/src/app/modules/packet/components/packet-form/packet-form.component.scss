@@ -2,6 +2,8 @@
   min-height: 200px;
   border-width: 2px;
   border-style: solid;
+  max-height: 450px;
+  overflow: auto;
 }
 input[type="button"] {
   width: 100%;
