@@ -24,6 +24,7 @@ export class LearningComponent {
 
   cancelLearning(): void {
     if (confirm("Are you sure you want to quit learning mode?")) {
+      this.store.dispatch(LearningPageAction.cleanLearningState());
       this.router.navigate(['/learn']);
     }
   }

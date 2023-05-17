@@ -7,4 +7,6 @@ export interface LearningPacket {
     lastLearned: Date;
     lastScore: number;
     bestScore: number;
+    numberOfRepetitionsOfValueToTranslation: number;
+    numberOfRepetitionsOfTranslationToValue: number;
 }

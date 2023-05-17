@@ -22,8 +22,9 @@
             <p>{{ learningPacket.bestScore}}</p>
         </div>
         <div class="col-md-1">
-            <button class="btn btn-primary"
-                [routerLink]="['/learn/' + learningPacket.packetId,{ repetition: 'true' }]">Learn</button>
+            <button class="btn btn-primary" [routerLink]="['/learn/' + learningPacket.packetId,{ repetition: 'true' }]">
+                {{ learningPacket.numberOfRepetitionsOfValueToTranslation}}/{{
+                learningPacket.numberOfRepetitionsOfTranslationToValue}}</button>
         </div>
     </div>
 </div>
