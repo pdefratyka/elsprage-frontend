@@ -1,15 +1,15 @@
 FROM node:latest as build
-WORKDIR /app
 
-RUN npm install -g @angular/cli
+WORKDIR /usr/local/app
 
-COPY ./package.json .
+COPY ./ /usr/local/app
+
 RUN npm install
-COPY . .
-RUN ng build
 
-WORKDIR /app/dist/elsprage-app
+RUN npm run build
 
-RUN npm i -g http-server
+FROM nginx:latest
 
-ENTRYPOINT ["http-server","-p","8080"]
+COPY --from=build usr/local/app/dist/elsprage-app /usr/share/nginx/html
+
+EXPOSE 80
