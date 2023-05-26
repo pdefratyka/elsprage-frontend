@@ -11,7 +11,7 @@ export class WordEffects {
     private readonly actions$: Actions,
     private readonly wordApiService: WordApiService,
     private readonly toastService: ToastService
-  ) {}
+  ) { }
 
   saveWord$ = createEffect(() => {
     return this.actions$.pipe(
@@ -25,7 +25,11 @@ export class WordEffects {
             });
           }),
           catchError((error) => {
-            this.toastService.error(error);
+            if (error.error.errorCode === 1) {
+              this.toastService.error("Word already exists");
+            } else {
+              this.toastService.error("There was some problem. Try again later");
+            }
             return of(WordApiAction.saveWordFailure({ error }));
           })
         )
@@ -45,7 +49,11 @@ export class WordEffects {
             });
           }),
           catchError((error) => {
-            this.toastService.error(error);
+            if (error.error.errorCode === 1) {
+              this.toastService.error("Word already exists");
+            } else {
+              this.toastService.error("There was some problem. Try again later");
+            }
             return of(WordApiAction.updateWordFailure({ error }));
           })
         )
