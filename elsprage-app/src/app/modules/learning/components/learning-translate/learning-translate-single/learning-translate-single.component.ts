@@ -52,6 +52,7 @@ export class LearningTranslateSingleComponent implements OnInit {
       this.soundEffectService.playWrongAnswer();
     }
     this.checkedAnswer = true;
+    this.soundEffectService.play(this.learningWord.sound);
     this.answerCheck.emit(this.correctAnswer);
   }
 

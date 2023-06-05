@@ -11,4 +11,5 @@ export interface Word {
   sound: string;
   example: string;
   imageDataEncoded: string;
+  audioData: string;
 }
