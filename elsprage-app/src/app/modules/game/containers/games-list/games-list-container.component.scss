@@ -1,0 +1,6 @@
+@use './../../../../../assets/styles/variables' as v;
+
+.games-list-page {
+    width: 100%;
+    background-color: v.$background-color-primary;
+}

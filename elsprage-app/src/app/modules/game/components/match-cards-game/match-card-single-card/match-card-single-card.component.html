@@ -1,0 +1,19 @@
+<div class="container-fluid card" (click)="selectCard()" [ngClass]="
+{ 'answer-not-visible-value': !card.isAnswerVisible && !card.isTranslation,
+'answer-not-visible-translation': !card.isAnswerVisible && card.isTranslation,
+'answer-visible-value': card.isAnswerVisible && !card.isTranslation,
+'answer-visible-translation': card.isAnswerVisible && card.isTranslation,
+'card-not-visible': !card.isVisible }">
+    <div class="row h-100">
+        <div class="col-md-12">
+            <ng-container *ngIf="card.isVisible && card.isAnswerVisible">
+                <p class="vertical-align">{{card.text | textWithSynonyms}}</p>
+            </ng-container>
+            <ng-container *ngIf="card.isVisible && !card.isAnswerVisible">
+            </ng-container>
+            <ng-container *ngIf="!card.isVisible">
+                <p class="vertical-align">{{card.text | textWithSynonyms}}</p>
+            </ng-container>
+        </div>
+    </div>
+</div>

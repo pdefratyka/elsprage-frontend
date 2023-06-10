@@ -1,0 +1,14 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <p>{{guessed}}/{{attempts}}</p>
+        </div>
+    </div>
+    <ng-container *ngFor="let word of words">
+        <div class="row">
+            <div class="col-md-12">
+                <p>{{word}}</p>
+            </div>
+        </div>
+    </ng-container>
+</div>

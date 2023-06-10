@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="row align-items-center">
+        <div class="col-md-4">
+            <p>{{ gamePacket.packetName }}</p>
+        </div>
+        <div class="col-md-1">
+            <p>{{ gamePacket.valueLanguage}}</p>
+        </div>
+        <div class="col-md-1">
+            <p>{{ gamePacket.translationLanguage }}</p>
+        </div>
+        <div class="col-md-1">
+            <p>{{ gamePacket.wordsCount}}</p>
+        </div>
+        <div class="col-md-3">
+            <p>{{ gamePacket.lastLearned | date: 'dd/MM/yyyy'}}</p>
+        </div>
+        <div class="col-md-1">
+            <p>{{ gamePacket.lastScore}}</p>
+        </div>
+        <div class="col-md-1">
+            <p>{{ gamePacket.bestScore}}</p>
+        </div>
+    </div>
+</div>

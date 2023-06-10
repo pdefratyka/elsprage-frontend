@@ -1,0 +1,38 @@
+<div class="containter-fluid match-card-page">
+    <div class="container-fluid cancel-button-container">
+        <button class="btn btn-danger" (click)="cancelLearning()">X</button>
+    </div>
+    <ng-container *ngIf="cards.length>0">
+        <div class="container-fluid main-panel">
+            <div class="row">
+                <div class="col-md-9 mx-auto">
+                    <app-match-card-board [cards]="cards" (cardSelection)="selectCard($event)"></app-match-card-board>
+                </div>
+                <div class="col-md-2 ">
+                    <div class="row">
+                        <div class="col-md-12 score">
+                            <app-match-card-score [attempts]="matchCardService.getAttempts()"
+                                [guessed]="matchCardService.getGuessed()"
+                                [words]="matchCardService.getGuessedWords()"></app-match-card-score>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-12">
+                            <input type="button" class="btn btn-success w-100" (click)="reloadComponent()"
+                                value="Play again" />
+                        </div>
+                    </div>
+                    <ng-container *ngIf="matchCardService.getGuessed()==cards.length/2">
+                        <div class="row mt-2">
+                            <div class="col-md-12">
+                                <input type="button" class="btn btn-success w-100" (click)="saveScore()"
+                                    value="Save score" />
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+        </div>
+    </ng-container>
+</div>

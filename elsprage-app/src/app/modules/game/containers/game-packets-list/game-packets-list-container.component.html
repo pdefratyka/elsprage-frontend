@@ -1,0 +1,12 @@
+<div class="containter-fluid cards-game-page">
+    <div class="container-fluid cancel-button-container">
+        <button class="btn btn-danger" (click)="cancelLearning()">X</button>
+    </div>
+    <div class="container-fluid packet-list-container">
+        <div class="row">
+            <div class="col-md-10 mx-auto">
+                <app-game-packet-selector [gamePackets]="gamePackets$|async" (packetSelection)="selectPacket($event)"></app-game-packet-selector>
+            </div>
+        </div>
+    </div>
+</div>

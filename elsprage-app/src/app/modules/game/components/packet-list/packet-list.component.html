@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">Name</div>
+        <div class="col-md-1">Value Language</div>
+        <div class="col-md-1">Translation Language</div>
+        <div class="col-md-1">Size</div>
+        <div class="col-md-3">Last learned</div>
+        <div class="col-md-1">Last score</div>
+        <div class="col-md-1">Best score</div>
+    </div>
+    <ng-container *ngFor="let gamePacket of gamePackets">
+        <div class="row" class="single-packet-row" (click)="selectPacket(gamePacket)">
+            <app-single-packet [gamePacket]="gamePacket"></app-single-packet>
+        </div>
+    </ng-container>
+</div>

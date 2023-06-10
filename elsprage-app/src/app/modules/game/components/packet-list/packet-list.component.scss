@@ -1,0 +1,11 @@
+.single-packet-row:nth-child(even) {
+    background-color: darkgray;
+}
+
+.single-packet-row:nth-child(odd) {
+    background-color: lightgray;
+}
+
+.single-packet-row:hover {
+    cursor: pointer;
+}

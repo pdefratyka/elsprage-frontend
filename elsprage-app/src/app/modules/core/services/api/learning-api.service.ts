@@ -35,7 +35,7 @@ export class LearningApiService {
   }
 
   saveLearningResult(learningResult: LearningResult): Observable<LearningResult> {
-    console.log(learningResult);  
+    console.log(learningResult);
     return this.httpClient.post<any>(
       `${LearningApiService.LEARNING_URL}/result`, learningResult
     );

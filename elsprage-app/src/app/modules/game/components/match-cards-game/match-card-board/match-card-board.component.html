@@ -1,0 +1,11 @@
+<div class="container-fluid cards-board">
+    <ng-container *ngFor="let i of getRange(5)">
+        <div class="row mt-2">
+            <ng-container *ngFor="let j of getRange(8)">
+                <div class="own-col-8">
+                    <app-match-card-single-card [card]="getCard(i,j)" (cardSelection)="selectCard($event)"></app-match-card-single-card>
+                </div>
+            </ng-container>
+        </div>
+    </ng-container>
+</div>

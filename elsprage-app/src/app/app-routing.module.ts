@@ -20,14 +20,19 @@ const routes: Routes = [
       import('./modules/learning/learning.module').then((module) => module.LearningModule),
   },
   {
+    path: 'games',
+    loadChildren: () =>
+      import('./modules/game/game.module').then((module) => module.GameModule),
+  },
+  {
     path: '',
     loadChildren: () =>
       import('./modules/user/user.module').then((module) => module.UserModule),
-  },
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

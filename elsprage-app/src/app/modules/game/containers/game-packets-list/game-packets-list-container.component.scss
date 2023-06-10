@@ -1,0 +1,18 @@
+@use './../../../../../assets/styles/variables' as v;
+
+.cards-game-page {
+    width: 100%;
+    background-color: v.$background-color-primary;
+}
+
+.cancel-button-container {
+    top: 40px;
+    right: 100px;
+    position: absolute;
+    height: 30px;
+    width: 30px;
+}
+
+.packet-list-container {
+    margin-top: 6%;
+}
