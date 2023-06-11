@@ -4,7 +4,9 @@
   }">
 
     <div class="row text-center">
-        <p>{{learningWord.value | textWithSynonyms }}</p>
+        <p (mouseover)="showExplanation = true; setMousePosition($event)" (mouseleave)="showExplanation = false">
+            {{learningWord.value |
+            textWithSynonyms }}</p>
     </div>
 
     <div class="row justify-content-center">
@@ -44,4 +46,9 @@
             </ng-container>
         </div>
     </div>
+    <ng-container *ngIf="showExplanation && learningWord.explanation">
+        <div class="explanation-container" [style.left.px]="divPositionX" [style.top.px]="divPositionY">
+            <p>{{learningWord.explanation}}</p>
+        </div>
+    </ng-container>
 </div>

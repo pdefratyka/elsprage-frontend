@@ -27,3 +27,16 @@ span {
     border-width: 2px;
     border-color: green;
 }
+
+.explanation-container {
+    position: absolute;
+    background-color: darkgray;
+    color: black;
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+
+    p {
+        font-size: 1.2rem;
+    }
+}

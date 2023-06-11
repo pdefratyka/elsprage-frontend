@@ -12,4 +12,5 @@ export interface WordRequest {
     image: string;
     sound: string;
     example: string;
+    explanation: string;
 }

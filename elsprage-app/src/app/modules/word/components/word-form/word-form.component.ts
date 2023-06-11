@@ -46,6 +46,7 @@ export class WordFormComponent implements OnInit {
       image: [''],
       sound: [''],
       example: [''],
+      explanation:['']
     });
   }
 
@@ -57,7 +58,8 @@ export class WordFormComponent implements OnInit {
       translationLanguage: this.languages[this.wordForm.get('translationLanguage')?.value],
       image: this.wordForm.get('image')?.value,
       sound: this.wordForm.get('sound')?.value,
-      example: this.wordForm.get('example')?.value
+      example: this.wordForm.get('example')?.value,
+      explanation: this.wordForm.get('explanation')?.value
     } as Word;
   }
 }

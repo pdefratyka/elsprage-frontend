@@ -69,6 +69,7 @@ export class EditWordFormComponent implements OnInit, OnChanges {
       image: [this.word.image],
       sound: [this.word.sound],
       example: [this.word.example],
+      explanation:[this.word.explanation]
     });
   }
 
@@ -85,6 +86,7 @@ export class EditWordFormComponent implements OnInit, OnChanges {
       image: this.wordForm.get('image')?.value,
       sound: this.wordForm.get('sound')?.value,
       example: this.wordForm.get('example')?.value,
+      explanation: this.wordForm.get('explanation')?.value,
     } as Word;
   }
 
@@ -100,6 +102,7 @@ export class EditWordFormComponent implements OnInit, OnChanges {
       this.wordForm.get('image').setValue(this.word.image);
       this.wordForm.get('sound').setValue(this.word.sound);
       this.wordForm.get('example').setValue(this.word.example);
+      this.wordForm.get('explanation').setValue(this.word.explanation);
       this.wordForm
         .get('valueLanguage')
         .setValue(

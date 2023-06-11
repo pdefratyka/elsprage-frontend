@@ -5,4 +5,5 @@ export interface LearningWord {
     example: string;
     image: string;
     sound: string;
+    explanation: string;
 }

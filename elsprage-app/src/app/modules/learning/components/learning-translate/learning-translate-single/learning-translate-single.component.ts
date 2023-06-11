@@ -25,6 +25,10 @@ export class LearningTranslateSingleComponent implements OnInit {
 
   correctAnswer: boolean = false;
   checkedAnswer: boolean = false;
+  showExplanation: boolean = false;
+
+  divPositionX = 0;
+  divPositionY = 0;
 
   constructor(private readonly soundEffectService: SoundEffectService) {
 
@@ -73,4 +77,8 @@ export class LearningTranslateSingleComponent implements OnInit {
     this.yourAnswer.nativeElement.focus();
   }
 
+  setMousePosition(event: MouseEvent) {
+    this.divPositionX = event.clientX;
+    this.divPositionY = event.clientY;
+  }
 }

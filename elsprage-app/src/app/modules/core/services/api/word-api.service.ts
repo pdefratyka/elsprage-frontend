@@ -13,7 +13,7 @@ import { Word } from 'src/app/modules/shared/models/word';
 })
 export class WordApiService {
   private static WORDS_URL = '/words';
-  constructor(private readonly httpClient: HttpClient) {}
+  constructor(private readonly httpClient: HttpClient) { }
 
   saveWord(word: Word): Observable<Word> {
     return this.httpClient
@@ -67,6 +67,7 @@ export class WordApiService {
       example: word.example,
       image: word.image,
       sound: word.sound,
+      explanation: word.explanation
     } as WordRequest;
   }
 }
