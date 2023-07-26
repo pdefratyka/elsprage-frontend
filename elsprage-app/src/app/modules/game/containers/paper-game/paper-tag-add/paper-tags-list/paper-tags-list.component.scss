@@ -1,0 +1,19 @@
+.single-tag-row:nth-child(even) {
+    background-color: darkgray;
+}
+
+.single-tag-row:nth-child(odd) {
+    background-color: lightgray;
+}
+
+.btn-danger {
+    float: right;
+}
+
+.button-container {
+    padding-right: 0px;
+}
+
+.container{
+    padding-right: 0px!important;
+}

@@ -1,0 +1,35 @@
+<div class="container-fluid">
+    <form [formGroup]="paperErrorForm" (submit)="savePaperGameError()">
+        <div class="row">
+            <div class="col-md-2">
+                <select class="form-select" formControlName="errorLevel" id="errorLevel">
+                    <option value="LOW">LOW</option>
+                    <option value="MEDIUM" selected>MEDIUM</option>
+                    <option value="HIGH">HIGH</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <textarea class="form-control" placeholder="wrong" formControlName="wrong" rows="1"
+                    id="wrong">{{paperError.wrong}}</textarea>
+            </div>
+            <div class="col-md-3">
+                <textarea class="form-control" placeholder="corrected" formControlName="corrected" rows="1"
+                    id="corrected">{{paperError.corrected}}</textarea>
+            </div>
+            <div class="col-md-3">
+                <textarea class="form-control" placeholder="explanation" formControlName="explanation" rows="1"
+                    id="explanation">{{paperError.explanation}}</textarea>
+            </div>
+            <ng-container *ngIf="isNewPaperError">
+                <div class="col-md-1">
+                    <input class="btn btn-primary" type="submit" value="Add" />
+                </div>
+            </ng-container>
+            <ng-container *ngIf="!isNewPaperError">
+                <div class="col-md-1">
+                    <input class="btn btn-danger" type="submit" value="X" (click)="removeError()" />
+                </div>
+            </ng-container>
+        </div>
+    </form>
+</div>

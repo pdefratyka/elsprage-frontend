@@ -1,0 +1,32 @@
+<div class="containter-fluid paper-game-results-page">
+    <div class="container-fluid cancel-button-container">
+        <button class="btn btn-danger" (click)="cancelLearning()">X</button>
+    </div>
+    <div class="main-panel">
+        <div class="row">
+            <div class="col-md-3">
+                <p>Topic</p>
+            </div>
+            <div class="col-md-1">
+                <p>Language</p>
+            </div>
+            <div class="col-md-2">
+                <p>Mode</p>
+            </div>
+            <div class="col-md-2">
+                <p>Date</p>
+            </div>
+            <div class="col-md-2">
+                <p>Words</p>
+            </div>
+            <div class="col-md-2">
+                <p>Errors</p>
+            </div>
+        </div>
+        <ng-container *ngFor="let paperResult of paperResults">
+            <div class="single-result-row">
+                <app-paper-single-result [paperResult]="paperResult"></app-paper-single-result>
+            </div>
+        </ng-container>
+    </div>
+</div>

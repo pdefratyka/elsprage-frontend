@@ -1,0 +1,37 @@
+@use './../../../../../../assets/styles/variables' as v;
+
+.add-topic-page {
+    width: 100%;
+    background-color: v.$background-color-primary;
+}
+
+.cancel-button-container {
+    top: 40px;
+    right: 100px;
+    position: absolute;
+    height: 30px;
+    width: 30px;
+}
+
+.main-panel {
+    width: 60%;
+    margin: 6% auto;
+}
+
+.topic-form {
+    background-color: darkgray;
+    border-radius: 20px;
+}
+
+.text-right-label {
+    float: right;
+}
+
+.single-tag {
+    background-color: lightgray;
+    text-align: center;
+    margin-left: 5px;
+    p {
+        color: black;
+    }
+}

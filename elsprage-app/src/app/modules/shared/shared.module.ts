@@ -13,6 +13,8 @@ import { PagePickerComponent } from './components/word-list/page-picker/page-pic
 import { TextWithSynonymsPipe } from './pipes/text-with-synonyms.pipe';
 import { FirstWordPipe } from './pipes/first-word.pipe';
 import { UmlautKeyDirective } from './directives/umlaut-key.directive';
+import { TimerComponent } from './components/timer/timer.component';
+import { TimerPipe } from './pipes/timer.pipe';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,8 @@ import { UmlautKeyDirective } from './directives/umlaut-key.directive';
     TextWithSynonymsPipe,
     FirstWordPipe,
     UmlautKeyDirective,
+    TimerComponent,
+    TimerPipe,
   ],
   imports: [CommonModule, FormsModule, RouterModule, ReactiveFormsModule],
   exports: [
@@ -36,7 +40,9 @@ import { UmlautKeyDirective } from './directives/umlaut-key.directive';
     WordListComponent,
     TextWithSynonymsPipe,
     FirstWordPipe,
-    UmlautKeyDirective
+    UmlautKeyDirective,
+    TimerComponent,
+    TimerPipe
   ],
 })
 export class SharedModule {}

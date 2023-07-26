@@ -1,0 +1,27 @@
+<div class="containter-fluid add-tag-page">
+    <div class="container-fluid cancel-button-container">
+        <button class="btn btn-danger" (click)="cancelLearning()">X</button>
+    </div>
+    <div class="main-panel">
+        <form [formGroup]="tagForm" (submit)="saveTag()" class="tag-form">
+            <div class="form-group row pt-3">
+                <div class="col-sm-2">
+                    <label for="value" class="col-form-label field-required text-right-label">Tag:</label>
+                </div>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" id="tag" formControlName="tag">
+                </div>
+            </div>
+            <div class="row mt-2 pb-3">
+                <div class="col-md-4 mx-auto text-center">
+                    <button type="submit" class="btn btn-primary" [disabled]="tagForm.invalid">Submit</button>
+                </div>
+            </div>
+        </form>
+        <div class="row mt-4">
+            <div class="col-md-8 mx-auto">
+                <app-paper-tags-list [tags]="tags$ | async" (tagRemove)="removeTag($event)"></app-paper-tags-list>
+            </div>
+        </div>
+    </div>
+</div>

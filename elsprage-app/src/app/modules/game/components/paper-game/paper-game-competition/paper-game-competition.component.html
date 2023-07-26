@@ -1,0 +1,26 @@
+<div class="container-fluid" *ngIf="gameParameters">
+    <div class="row">
+        <div class="col-md-2 text-center mx-auto">
+            <app-timer [timeInSeconds]="timeInSeconds()"></app-timer>
+        </div>
+        <div class="col-md-8 text-center mx-auto">
+            <h2>{{gameParameters.topic.value}}</h2>
+        </div>
+        <div class="col-md-1 text-center mx-auto">
+            <p>{{gameParameters.language}}</p>
+        </div>
+        <div class="col-md-1">
+            {{numberOfWords}}/{{gameParameters.mode.numberOfWords}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <textarea class="form-control" id="paperText" rows="20" #paperText (input)="onPaperTextInput()"></textarea>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-md-6 text-center mx-auto">
+            <button class="btn btn-success" (click)="checkText()">Check</button>
+        </div>
+    </div>
+</div>

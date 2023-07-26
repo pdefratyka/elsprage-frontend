@@ -1,0 +1,30 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2">
+        </div>
+        <div class="col-md-8 text-center mx-auto">
+            <h2>{{gameParameters.topic.value}}</h2>
+        </div>
+        <div class="col-md-2 text-center mx-auto">
+            <p>{{gameParameters.language}}</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <textarea class="form-control" rows="14" [disabled]="true">{{paperText}}</textarea>
+        </div>
+        <div class="col-md-6">
+            <textarea class="form-control" rows="14" id="refactoredText" #refactoredText></textarea>
+        </div>
+    </div>
+    <div class="row mt-2 errors-container">
+        <div class="col-md-12 text-center mx-auto">
+            <app-paper-game-errors [paperErrors]="paperErrors"></app-paper-game-errors>
+        </div>
+    </div>
+    <div class="row mt-2 mb-4">
+        <div class="col-md-6 text-center mx-auto">
+            <button class="btn btn-success" (click)="showSummary()">Save</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+<div class="containter-fluid paper-page">
+    <div class="container-fluid cancel-button-container">
+        <button class="btn btn-danger" (click)="cancelLearning()">X</button>
+    </div>
+    <div class="main-panel">
+        <ng-container *ngIf="isSelectTopic">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-4">
+                        <input type="button" class="btn btn-success w-100" [routerLink]="['/games/paper/topics/add']"
+                            value="Add Topic" />
+                    </div>
+                    <div class="col-md-4">
+                        <input type="button" class="btn btn-success w-100" [routerLink]="['/games/paper/tags/add']"
+                            value="Add Tag" />
+                    </div>
+                    <div class="col-md-4">
+                        <input type="button" class="btn btn-success w-100" [routerLink]="['/games/paper/results']"
+                            value="Results" />
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-md-6 mx-auto">
+                        <app-paper-game-start [topics]="topics$|async" [paperModes]="paperModes$|async"
+                            (gameStart)="startGame($event)"></app-paper-game-start>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+        <ng-container *ngIf="isGameCompetition">
+            <app-paper-game-competition [gameParameters]="gameParameters"
+                (paperCheck)="checkPaper($event)"></app-paper-game-competition>
+        </ng-container>
+        <ng-container *ngIf="isPaperCheck">
+            <app-paper-game-difference [gameParameters]="gameParameters" [paperText]="paperText"
+                (summaryShow)="showSummary($event)"></app-paper-game-difference>
+        </ng-container>
+        <ng-container *ngIf="isSummary">
+            <app-paper-game-summary [paperResult]="savedPaperResult$ | async"></app-paper-game-summary>
+        </ng-container>
+    </div>
+</div>

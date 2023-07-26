@@ -1,0 +1,37 @@
+<div class="containter-fluid result-details-page ">
+    <div class="container-fluid cancel-button-container">
+        <button class="btn btn-danger" (click)="cancelLearning()">X</button>
+    </div>
+    <div class="main-panel" *ngIf="(paperResult$ | async) as paperResult">
+        <div class="container-fluid result-details-page">
+            <div class="row mt-4">
+                <div class="col-md-6 wrong-text">
+                    <p>{{paperResult.paperText}}</p>
+                </div>
+                <div class="col-md-6 corrected-text">
+                    <p>{{paperResult.refactoredText}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-md-1">
+                <p>Level</p>
+            </div>
+            <div class="col-md-4">
+                <p>Wrong</p>
+            </div>
+            <div class="col-md-4">
+                <p>Corrected</p>
+            </div>
+            <div class="col-md-3">
+                <p>explanation</p>
+            </div>
+        </div>
+        <ng-container *ngFor="let paperError of paperResult.paperErrors">
+            <div class="single-error">
+                <app-paper-error-details [paperError]="paperError"></app-paper-error-details>
+            </div>
+        </ng-container>
+    </div>
+
+</div>

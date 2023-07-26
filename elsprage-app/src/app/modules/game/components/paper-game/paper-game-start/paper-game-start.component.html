@@ -1,0 +1,33 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <select class="form-select" #languageSelector (change)="onSelectChange()">
+                <option selected value="">Select Language</option>
+                <option value="EN">EN</option>
+                <option value="DE">DE</option>
+            </select>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-md-12">
+            <select class="form-select" #modeSelector (change)="onSelectChange()">
+                <option selected value="">Select Mode</option>
+                <option *ngFor="let mode of paperModes" value="{{mode.id}}">{{mode.name}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-md-12">
+            <select class="form-select" #topicSelector (change)="onSelectChange()">
+                <option selected value="">Select Topic</option>
+                <option value="-1">Random</option>
+                <option *ngFor="let topic of topics" value="{{topic.id}}">{{topic.value}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-md-6 mx-auto">
+            <button class="btn btn-primary w-100" (click)="startGame()" [disabled]="isSubmitDisabled">Start</button>
+        </div>
+    </div>
+</div>

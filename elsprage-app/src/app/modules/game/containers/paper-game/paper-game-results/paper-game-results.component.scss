@@ -1,0 +1,27 @@
+@use './../../../../../../assets/styles/variables' as v;
+
+.paper-game-results-page {
+    width: 100%;
+    background-color: v.$background-color-primary;
+}
+
+.cancel-button-container {
+    top: 40px;
+    right: 100px;
+    position: absolute;
+    height: 30px;
+    width: 30px;
+}
+
+.main-panel {
+    width: 60%;
+    margin: 6% auto;
+}
+
+.single-result-row:nth-child(even) {
+    background-color: darkgray;
+}
+
+.single-result-row:nth-child(odd) {
+    background-color: lightgray;
+}

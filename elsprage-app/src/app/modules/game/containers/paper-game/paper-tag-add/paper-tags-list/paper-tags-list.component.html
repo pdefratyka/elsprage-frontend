@@ -1,0 +1,12 @@
+<div class="container-fluid">
+    <ng-container *ngFor="let tag of tags">
+        <div class="row single-tag-row">
+            <div class="col-md-11">
+                <p>{{tag.value}}</p>
+            </div>
+            <div class="col-md-1 button-container">
+                <button class="btn btn-danger float-right" (click)="removeTag(tag.id)">X</button>
+            </div>
+        </div>
+    </ng-container>
+</div>

@@ -1,0 +1,9 @@
+<div class="container-fluid">
+    <ng-container *ngFor="let topic of topics">
+        <div class="row single-topic-row">
+            <div class="col-md-12">
+                <app-single-topic [topic]="topic" (topicRemove)="removeTopic($event)"></app-single-topic>
+            </div>
+        </div>
+    </ng-container>
+</div>

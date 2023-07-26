@@ -1,0 +1,22 @@
+<div class="container-fluid" (click)="navigateToDetails()">
+    <div class="row">
+        <div class="col-md-3">
+            <p>{{paperResult.topic.value}}</p>
+        </div>
+        <div class="col-md-1">
+            <p>{{paperResult.language}}</p>
+        </div>
+        <div class="col-md-2">
+            <p>{{paperResult.paperMode.name}}</p>
+        </div>
+        <div class="col-md-2">
+            <p>{{paperResult.date | date: 'dd/MM/yyyy'}}</p>
+        </div>
+        <div class="col-md-2">
+            <p>{{paperResult.numberOfWords}}</p>
+        </div>
+        <div class="col-md-2">
+            <p>{{paperResult.paperErrors.length}}</p>
+        </div>
+    </div>
+</div>

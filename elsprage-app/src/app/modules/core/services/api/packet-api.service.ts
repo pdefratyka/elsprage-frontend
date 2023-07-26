@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { Packet } from 'src/app/modules/shared/models/packet';
+import { PaperResult } from 'src/app/modules/shared/models/paperResult';
 import { PacketRequest } from 'src/app/modules/shared/models/requests/packet-request';
 import { PacketResponse } from 'src/app/modules/shared/models/responses/packet-response';
 import { UsersPacketsResponse } from 'src/app/modules/shared/models/responses/users-packets-response';

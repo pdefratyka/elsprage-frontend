@@ -1,0 +1,7 @@
+.single-topic-row:nth-child(even) {
+    background-color: darkgray;
+}
+
+.single-topic-row:nth-child(odd) {
+    background-color: lightgray;
+}

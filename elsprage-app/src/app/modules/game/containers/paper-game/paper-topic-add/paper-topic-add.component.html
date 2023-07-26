@@ -1,0 +1,45 @@
+<div class="containter-fluid add-topic-page">
+    <div class="container-fluid cancel-button-container">
+        <button class="btn btn-danger" (click)="cancelLearning()">X</button>
+    </div>
+    <div class="main-panel">
+        <form [formGroup]="topicForm" (submit)="saveTopic()" class="topic-form">
+            <div class="form-group row pt-3">
+                <div class="col-sm-2">
+                    <label for="value" class="col-form-label field-required text-right-label">Topic:</label>
+                </div>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" id="topic" formControlName="topic">
+                </div>
+            </div>
+            <div class="row pt-3">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-9">
+                    <select class="form-select" aria-label="Select tags" (change)="selectTag()" #tagSelect>
+                        <option selected>Select Tags</option>
+                        <option value="{{tag.id}}" *ngFor="let tag of tags">{{tag.value}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-sm-2"></div>
+                <ng-container *ngFor="let tag of selectedTagsValues">
+                    <div class="col-md-3 single-tag">
+                        <p>{{tag}}</p>
+                    </div>
+                </ng-container>
+            </div>
+            <div class="row mt-3 pb-3">
+                <div class="col-md-4 mx-auto text-center">
+                    <button type="submit" class="btn btn-primary" [disabled]="topicForm.invalid">Submit</button>
+                </div>
+            </div>
+        </form>
+        <div class="row mt-4">
+            <div class="col-md-8 mx-auto">
+                <app-paper-topic-list [topics]="topics$ | async"
+                    (topicRemove)="removeTopic($event)"></app-paper-topic-list>
+            </div>
+        </div>
+    </div>
+</div>

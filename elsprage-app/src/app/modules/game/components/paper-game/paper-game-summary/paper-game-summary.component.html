@@ -1,0 +1,23 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4">
+            <p>Number of characters</p>
+        </div>
+        <div class="col-md-8">
+            {{paperResult?.numberOfCharacters}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <p>Number of words</p>
+        </div>
+        <div class="col-md-8">
+            {{paperResult?.numberOfWords}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <button class="btn btn-success" [routerLink]="['/games']">Continue</button>
+        </div>
+    </div>
+</div>

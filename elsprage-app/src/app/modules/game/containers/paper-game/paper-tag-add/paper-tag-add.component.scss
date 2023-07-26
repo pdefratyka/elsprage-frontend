@@ -1,0 +1,28 @@
+@use './../../../../../../assets/styles/variables' as v;
+
+.add-tag-page {
+    width: 100%;
+    background-color: v.$background-color-primary;
+}
+
+.cancel-button-container {
+    top: 40px;
+    right: 100px;
+    position: absolute;
+    height: 30px;
+    width: 30px;
+}
+
+.main-panel {
+    width: 60%;
+    margin: 6% auto;
+}
+
+.tag-form {
+    background-color: darkgray;
+    border-radius: 20px;
+}
+
+.text-right-label {
+    float: right;
+}

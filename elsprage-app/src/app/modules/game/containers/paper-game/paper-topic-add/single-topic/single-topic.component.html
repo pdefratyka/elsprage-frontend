@@ -1,0 +1,12 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-5">{{topic.value}}</div>
+        <div class="col-md-1">|</div>
+        <div class="col-md-5">
+            <span *ngFor="let tag of topic.tags">{{tag.value}}</span>
+        </div>
+        <div class="col-md-1 button-container">
+            <button class="btn btn-danger float-right" (click)="removeTopic()">X</button>
+        </div>
+    </div>
+</div>

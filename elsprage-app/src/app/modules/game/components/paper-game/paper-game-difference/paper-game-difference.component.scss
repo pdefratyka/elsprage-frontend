@@ -1,0 +1,16 @@
+textarea ::selection {
+    background-color: yellow;
+}
+
+.text-error {
+    color: red;
+}
+
+.improved-text {
+    color: green;
+}
+
+.errors-container{
+    max-height: 350px;
+    overflow: auto;
+}

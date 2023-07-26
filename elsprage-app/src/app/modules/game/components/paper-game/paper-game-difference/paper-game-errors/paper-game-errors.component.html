@@ -1,0 +1,17 @@
+<div class="container-fluid">
+    <div class="row mt-2">
+        <app-paper-game-single-error [paperError]="errorToAdd" (paperGameErrorSave)="addPaperGameError($event)"
+            [isNewPaperError]="true"></app-paper-game-single-error>
+    </div>
+    <ng-container *ngFor="let paperError of paperErrors; index as i">
+        <div class="row mt-2">
+            <div class="col-md-1">
+                <p>{{i}}.</p>
+            </div>
+            <div class="col-md-11">
+                <app-paper-game-single-error [paperError]="paperError" [isNewPaperError]="false"
+                    (paperGameErrorRemove)="removePaperGameError($event)"></app-paper-game-single-error>
+            </div>
+        </div>
+    </ng-container>
+</div>
