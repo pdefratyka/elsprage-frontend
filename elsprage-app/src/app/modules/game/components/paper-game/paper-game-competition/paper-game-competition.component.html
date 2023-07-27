@@ -15,9 +15,23 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <textarea class="form-control" id="paperText" rows="20" #paperText (input)="onPaperTextInput()"></textarea>
+            <ng-container *ngIf="gameParameters.language==='DE'">
+                <textarea class="form-control" id="paperText" rows="20" #paperText (input)="onPaperTextInput()"
+                    appUmlautKey></textarea>
+            </ng-container>
+            <ng-container *ngIf="gameParameters.language!=='DE'">
+                <textarea class="form-control" id="paperText" rows="20" #paperText (input)="onPaperTextInput()"></textarea>
+            </ng-container>
         </div>
     </div>
+    <ng-container *ngIf="gameParameters.language==='DE'">
+        <div class="row mt-2">
+            <div class="col-md-4">
+                <app-german-keyboard (selectKey)="onGermanKeySelect($event)">
+                </app-german-keyboard>
+            </div>
+        </div>
+    </ng-container>
     <div class="row mt-2">
         <div class="col-md-6 text-center mx-auto">
             <button class="btn btn-success" (click)="checkText()">Check</button>

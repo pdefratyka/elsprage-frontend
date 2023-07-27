@@ -1,16 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { catchError, concatMap, map, of, switchMap } from 'rxjs';
+import { catchError, concatMap, map, of, switchMap, tap } from 'rxjs';
 import { ToastService } from 'src/app/modules/core/services/notification/toast.service';
 import { LearningApiAction, LearningPageAction } from '../actions';
 import { LearningApiService } from 'src/app/modules/core/services/api/learning-api.service';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class LearningEffects {
   constructor(
     private readonly actions$: Actions,
     private readonly learningApiService: LearningApiService,
-    private readonly toastService: ToastService
+    private readonly toastService: ToastService,
+    private readonly router: Router
   ) { }
 
   getLearningPackets$ = createEffect(() =>
@@ -56,8 +58,11 @@ export class LearningEffects {
       ofType(LearningPageAction.saveLearningResult),
       switchMap((action) =>
         this.learningApiService.saveLearningResult(action.learningResult).pipe(
-          map(() =>
-            LearningApiAction.saveLearningResultSuccess()
+          map(() => {
+            this.router.navigate(['/learn']);
+            return LearningApiAction.saveLearningResultSuccess()
+          }
+
           ),
           catchError(error => {
             this.toastService.error(error);

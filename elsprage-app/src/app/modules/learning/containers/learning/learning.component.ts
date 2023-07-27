@@ -50,6 +50,6 @@ export class LearningComponent {
   saveResult(): void {
     this.store.dispatch(LearningPageAction.saveLearningResult({ learningResult: this.learningResult }));
     this.store.dispatch(LearningPageAction.cleanLearningState());
-    this.router.navigate(['/learn']);
+    // this.router.navigate(['/learn']);
   }
 }

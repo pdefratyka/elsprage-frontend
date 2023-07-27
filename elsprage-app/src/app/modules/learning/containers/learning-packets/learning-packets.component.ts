@@ -20,6 +20,7 @@ export class LearningPacketsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log("init");
     this.store.dispatch(LearningPageAction.getLearningPackets());
   }
 }

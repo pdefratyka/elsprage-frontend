@@ -27,4 +27,9 @@ export class PaperGameCompetitionComponent {
     const paperText = this.paperText.nativeElement.value;
     this.numberOfWords = paperText.split(" ").length
   }
+
+  onGermanKeySelect(key: string): void {
+    this.paperText.nativeElement.value = this.paperText.nativeElement.value + key;
+    this.paperText.nativeElement.focus();
+  }
 }
