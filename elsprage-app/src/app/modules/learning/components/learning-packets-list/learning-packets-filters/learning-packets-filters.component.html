@@ -1,0 +1,9 @@
+<div class="container-fluid">
+    <div class="row">
+        <select class="form-select" id="languageSelector" #modeSelector (change)="selectLanguage()" #languageSelector>
+            <option value="">Select language</option>
+            <option value="EN" [selected]="packetsFilter.language === 'EN'">EN</option>
+            <option value="DE" [selected]="packetsFilter.language === 'DE'">DE</option>
+        </select>
+    </div>
+</div>

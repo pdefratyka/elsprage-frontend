@@ -1,7 +1,7 @@
 .single-packet-row {
-   height: 50px;
-   font-size: 1.2rem;
-   cursor: pointer;
+    height: 50px;
+    font-size: 1.2rem;
+    cursor: pointer;
 }
 
 .single-packet-row:nth-child(even) {
@@ -14,4 +14,10 @@
 
 .btn-success {
     width: 100%;
+}
+
+.selected-packet {
+    border-style: solid;
+    border-width: 3px;
+    border-color: darkgoldenrod;
 }

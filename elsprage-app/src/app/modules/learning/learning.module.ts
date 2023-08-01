@@ -15,6 +15,7 @@ import { LearningTranslateComponent } from './components/learning-translate/lear
 import { LearningTranslateSingleComponent } from './components/learning-translate/learning-translate-single/learning-translate-single.component';
 import { LearningProgressComponent } from './components/learning-translate/learning-progress/learning-progress.component';
 import { LearningResultComponent } from './components/learning-result/learning-result.component';
+import { LearningPacketsFiltersComponent } from './components/learning-packets-list/learning-packets-filters/learning-packets-filters.component';
 
 
 
@@ -29,6 +30,7 @@ import { LearningResultComponent } from './components/learning-result/learning-r
     LearningTranslateSingleComponent,
     LearningProgressComponent,
     LearningResultComponent,
+    LearningPacketsFiltersComponent,
   ],
   imports: [
     CommonModule,

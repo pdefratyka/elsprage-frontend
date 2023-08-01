@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { catchError, concatMap, map, of, switchMap, tap } from 'rxjs';
+import { catchError, map, of, switchMap } from 'rxjs';
 import { ToastService } from 'src/app/modules/core/services/notification/toast.service';
 import { LearningApiAction, LearningPageAction } from '../actions';
 import { LearningApiService } from 'src/app/modules/core/services/api/learning-api.service';
@@ -18,8 +18,8 @@ export class LearningEffects {
   getLearningPackets$ = createEffect(() =>
     this.actions$.pipe(
       ofType(LearningPageAction.getLearningPackets),
-      switchMap(() =>
-        this.learningApiService.getLearningPackets().pipe(
+      switchMap((action) =>
+        this.learningApiService.getLearningPackets(action.packetsFilter).pipe(
           map(learningPackets =>
             LearningApiAction.getLearningPacketsSuccess({ learningPackets })
           ),
@@ -40,7 +40,7 @@ export class LearningEffects {
       switchMap((action) =>
         this.learningApiService.getPacketsWords(action.packetId, action.learningMode, action.repetitionMode).pipe(
           map(learningWords =>
-            LearningApiAction.getPacketsWordsSuccess({ learningWords })
+            LearningApiAction.getPacketsWordsSuccess({ learningWords: learningWords, packetId: action.packetId })
           ),
           catchError(error => {
             this.toastService.error(error);

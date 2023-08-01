@@ -23,3 +23,11 @@ export const getLearningPackets = createSelector(getLearningState, (state) => {
 export const getLearningWords = createSelector(getLearningState, (state) => {
   return state.learningReducer.selectedPacket.words;
 });
+
+export const getLearningPacket = createSelector(getLearningState, (state) => {
+  return state.learningReducer.selectedPacket.packetId;
+});
+
+export const getPacketsFilter = createSelector(getLearningState, (state) => {
+  return state.learningReducer.packetsFilter;
+});

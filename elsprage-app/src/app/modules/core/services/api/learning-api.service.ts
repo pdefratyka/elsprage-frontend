@@ -5,6 +5,7 @@ import { LearningMode } from 'src/app/modules/shared/models/learningMode';
 import { LearningPacket } from 'src/app/modules/shared/models/learningPacket';
 import { LearningResult } from 'src/app/modules/shared/models/learningResult';
 import { LearningWord } from 'src/app/modules/shared/models/learningWord';
+import { PacketsFilter } from 'src/app/modules/shared/models/packetsFilter';
 import { LearningPacketsResponse } from 'src/app/modules/shared/models/responses/learning-packets-response';
 import { PacketsWordsResponse } from 'src/app/modules/shared/models/responses/packets-words-response';
 
@@ -16,9 +17,9 @@ export class LearningApiService {
   constructor(private readonly httpClient: HttpClient) { }
 
 
-  getLearningPackets(): Observable<LearningPacket[]> {
+  getLearningPackets(packetsFilters: PacketsFilter): Observable<LearningPacket[]> {
     return this.httpClient.get<LearningPacketsResponse>(
-      `${LearningApiService.LEARNING_URL}/packets`
+      this.buildGetLearningPacketsUrl(packetsFilters)
     ).pipe(map(response => response.learningPackets));
   }
 
@@ -35,9 +36,16 @@ export class LearningApiService {
   }
 
   saveLearningResult(learningResult: LearningResult): Observable<LearningResult> {
-    console.log(learningResult);
     return this.httpClient.post<any>(
       `${LearningApiService.LEARNING_URL}/result`, learningResult
     );
+  }
+
+  private buildGetLearningPacketsUrl(packetsFilters: PacketsFilter): string {
+    let language = "";
+    if (packetsFilters.language) {
+      language = packetsFilters.language;
+    }
+    return `${LearningApiService.LEARNING_URL}/packets?language=` + language;
   }
 }

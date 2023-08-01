@@ -1,5 +1,9 @@
 <div class="container">
     <div class="row">
+        <app-learning-packets-filters [packetsFilter]="packetsFilter"
+            (languageSelection)="selectLanguage($event)"></app-learning-packets-filters>
+    </div>
+    <div class="row">
         <div class="col-md-4">Name</div>
         <div class="col-md-1">Value Language</div>
         <div class="col-md-1">Translation Language</div>
@@ -10,7 +14,8 @@
         <div class="col-md-1">Repetitions</div>
     </div>
     <ng-container *ngFor="let learningPacket of learningPackets">
-        <div class="row" class="single-packet-row">
+        <div class="row single-packet-row"
+            [ngClass]="{ 'selected-packet': learningPacket.packetId===currentLearningPacketId}">
             <app-single-learning-packet [learningPacket]="learningPacket"></app-single-learning-packet>
         </div>
     </ng-container>

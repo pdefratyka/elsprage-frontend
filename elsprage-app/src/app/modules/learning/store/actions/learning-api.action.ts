@@ -17,7 +17,7 @@ export const getLearningPacketsFailure = createAction(
 
 export const getPacketsWordsSuccess = createAction(
   `[${LEARNING_API}] Get Packets Words Success`,
-  props<{ learningWords: LearningWord[] }>()
+  props<{ learningWords: LearningWord[], packetId: number }>()
 );
 
 export const getPacketsWordsFailure = createAction(

@@ -6,7 +6,10 @@
                 <app-side-menu></app-side-menu>
             </div>
             <div class="col-md-10 mx-auto">
-                <app-learning-packets-list [learningPackets]="learningPackets$ | async"></app-learning-packets-list>
+                <app-learning-packets-list [learningPackets]="learningPackets$ | async"
+                    [currentLearningPacketId]="currentLearningPacketId$ | async"
+                    [packetsFilter]="packetsFilter$ | async"
+                    (languageSelection)="selectLanguage($event)"></app-learning-packets-list>
             </div>
         </div>
     </div>
