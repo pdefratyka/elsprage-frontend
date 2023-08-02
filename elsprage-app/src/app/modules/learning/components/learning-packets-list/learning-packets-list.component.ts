@@ -16,8 +16,20 @@ export class LearningPacketsListComponent {
   packetsFilter: PacketsFilter;
   @Output()
   languageSelection: EventEmitter<string> = new EventEmitter<string>();
+  @Output()
+  repeatsModeChange: EventEmitter<void> = new EventEmitter<void>();
+  @Output()
+  scoreNot100Change: EventEmitter<void> = new EventEmitter<void>();
 
   selectLanguage(language: string): void {
     this.languageSelection.emit(language);
+  }
+
+  changeRepeatsMode(): void {
+    this.repeatsModeChange.emit();
+  }
+
+  scoreNot100ChangeMode(): void {
+    this.scoreNot100Change.emit();
   }
 }

@@ -9,7 +9,9 @@
                 <app-learning-packets-list [learningPackets]="learningPackets$ | async"
                     [currentLearningPacketId]="currentLearningPacketId$ | async"
                     [packetsFilter]="packetsFilter$ | async"
-                    (languageSelection)="selectLanguage($event)"></app-learning-packets-list>
+                    (languageSelection)="selectLanguage($event)"
+                    (repeatsModeChange)="changeRepeatsMode()"
+                    (scoreNot100Change)="changeScore100Mode()"></app-learning-packets-list>
             </div>
         </div>
     </div>

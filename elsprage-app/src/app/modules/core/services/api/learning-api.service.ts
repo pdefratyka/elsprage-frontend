@@ -43,9 +43,17 @@ export class LearningApiService {
 
   private buildGetLearningPacketsUrl(packetsFilters: PacketsFilter): string {
     let language = "";
+    let isScoreNot100 = false;
+    let haveRepeats = false;
     if (packetsFilters.language) {
       language = packetsFilters.language;
     }
-    return `${LearningApiService.LEARNING_URL}/packets?language=` + language;
+    if (packetsFilters.isScoreNot100) {
+      isScoreNot100 = true;
+    }
+    if (packetsFilters.haveRepeats) {
+      haveRepeats = true;
+    }
+    return `${LearningApiService.LEARNING_URL}/packets?language=${language}&isScoreNot100=${isScoreNot100}&haveRepeats=${haveRepeats}`;
   }
 }

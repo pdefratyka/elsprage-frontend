@@ -22,7 +22,9 @@ export const initialState: LearningState = {
     words: []
   },
   packetsFilter: {
-    language: ''
+    language: '',
+    haveRepeats: false,
+    isScoreNot100: false
   }
 };
 
@@ -70,10 +72,39 @@ export const learningReducer = createReducer<LearningState>(
     };
   }),
 
-  on(LearningPageAction.setPacketsFilters, (state, action): LearningState => {
+  on(LearningPageAction.setPacketsFiltersLanguage, (state, action): LearningState => {
+    let packetsFilter = {
+      language: action.language,
+      isScoreNot100: state.packetsFilter.isScoreNot100,
+      haveRepeats: state.packetsFilter.haveRepeats
+    } as PacketsFilter;
     return {
       ...state,
-      packetsFilter: action.packetsFilter
+      packetsFilter: packetsFilter
+    };
+  }),
+
+  on(LearningPageAction.setPacketsFiltersRepeatsMode, (state, action): LearningState => {
+    let packetsFilter = {
+      language: state.packetsFilter.language,
+      isScoreNot100: state.packetsFilter.isScoreNot100,
+      haveRepeats: !state.packetsFilter.haveRepeats
+    } as PacketsFilter;
+    return {
+      ...state,
+      packetsFilter: packetsFilter
+    };
+  }),
+
+  on(LearningPageAction.setPacketsFiltersScoreNot100, (state, action): LearningState => {
+    let packetsFilter = {
+      language: state.packetsFilter.language,
+      isScoreNot100: !state.packetsFilter.isScoreNot100,
+      haveRepeats: state.packetsFilter.haveRepeats
+    } as PacketsFilter;
+    return {
+      ...state,
+      packetsFilter: packetsFilter
     };
   }),
 );

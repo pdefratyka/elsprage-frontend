@@ -14,4 +14,8 @@ export const saveLearningResult = createAction(`[${LEARNING_PAGE}] Save Learning
 
 export const cleanLearningState = createAction(`[${LEARNING_PAGE}] Clean Learning State`);
 
-export const setPacketsFilters = createAction(`[${LEARNING_PAGE}] Set Packets Filters`, props<{ packetsFilter: PacketsFilter }>());
+export const setPacketsFiltersLanguage = createAction(`[${LEARNING_PAGE}] Set Packets Filters Language`, props<{ language: string }>());
+
+export const setPacketsFiltersRepeatsMode = createAction(`[${LEARNING_PAGE}] Set Packets Filters Repeat Mode`);
+
+export const setPacketsFiltersScoreNot100 = createAction(`[${LEARNING_PAGE}] Set Packets Filters Score Not 100`);

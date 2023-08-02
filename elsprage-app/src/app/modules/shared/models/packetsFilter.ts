@@ -1,3 +1,5 @@
 export interface PacketsFilter {
-    language: string;
+    language: string,
+    isScoreNot100: boolean,
+    haveRepeats: boolean
 }

@@ -25,17 +25,27 @@ export class LearningPacketsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.store.pipe(select(getPacketsFilter), take(1)).subscribe(packetsFilter => {
-      this.store.dispatch(LearningPageAction.getLearningPackets({ packetsFilter }));
-    })
-
+    this.updateLearningPackets();
   }
 
   selectLanguage(language: string): void {
-    const packetsFilter = {
-      language: language
-    } as PacketsFilter;
-    this.store.dispatch(LearningPageAction.setPacketsFilters({ packetsFilter }));
-    this.store.dispatch(LearningPageAction.getLearningPackets({ packetsFilter }));
+    this.store.dispatch(LearningPageAction.setPacketsFiltersLanguage({ language }));
+    this.updateLearningPackets();
+  }
+
+  changeRepeatsMode(): void {
+    this.store.dispatch(LearningPageAction.setPacketsFiltersRepeatsMode());
+    this.updateLearningPackets();
+  }
+
+  changeScore100Mode(): void {
+    this.store.dispatch(LearningPageAction.setPacketsFiltersScoreNot100());
+    this.updateLearningPackets();
+  }
+
+  updateLearningPackets(): void {
+    this.store.pipe(select(getPacketsFilter), take(1)).subscribe(packetsFilter => {
+      this.store.dispatch(LearningPageAction.getLearningPackets({ packetsFilter }));
+    })
   }
 }
